@@ -29,7 +29,12 @@
   width: 50px;
   margin-right: 10px;
 }
-.main-container nav {
+.main-container main.main-home, .main-container main.main-list, .main-container main.main-about {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.main-container main.main-home nav, .main-container main.main-list nav, .main-container main.main-about nav {
   background-color: #1B9C85;
   color: #E8F6EF;
   padding: 5px 20%;
@@ -39,23 +44,27 @@
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3137254902);
   z-index: 1;
 }
-.main-container nav ul {
+.main-container main.main-home nav ul, .main-container main.main-list nav ul, .main-container main.main-about nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.main-container nav ul li {
+.main-container main.main-home nav ul li a, .main-container main.main-list nav ul li a, .main-container main.main-about nav ul li a {
   display: flex;
+  justify-content: center;
+  color: #E8F6EF;
+  text-decoration: none;
+  font-size: 1.5rem;
 }
-.main-container nav ul li svg {
+.main-container main.main-home nav ul li a svg, .main-container main.main-list nav ul li a svg, .main-container main.main-about nav ul li a svg {
   width: 20px;
   margin-right: 10px;
 }
-.main-container main.main-home, .main-container main.main-list, .main-container main.main-about {
+.main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
   background-color: #E8F6EF;
-  flex-grow: 1;
   font-size: 5rem;
   padding: 10px 80px;
+  flex-grow: 1;
 }
 
 /*# sourceMappingURL=index.css.map */

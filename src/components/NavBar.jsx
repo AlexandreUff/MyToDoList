@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { IcoHouse, IcoInfo } from "./Icons";
 
 export default function NavBar(){
@@ -5,10 +6,14 @@ export default function NavBar(){
         <nav>
             <ul>
                 <li>
-                    <IcoHouse /> Início
+                    <Link to={"/"}>
+                        <IcoHouse /> Início
+                    </Link>
                 </li>
                 <li>
-                    <IcoInfo /> Sobre
+                    <Link to={"/about"}>
+                        <IcoInfo /> Sobre
+                    </Link>
                 </li>
             </ul>
         </nav>

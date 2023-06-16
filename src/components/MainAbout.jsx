@@ -1,7 +1,12 @@
+import NavBar from "./NavBar";
+
 export default function MainHome(props){
     return (
         <main className="main-about">
-            How works TODO list...
+            <NavBar />
+            <section>
+                How works TODO List...
+            </section>
         </main>
     )
 }
