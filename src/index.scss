@@ -64,10 +64,11 @@ $color4: #FFE194;
         }
     }
 
-    main.main-home{
-        background-color: $color4;
+    main.main-home, main.main-list, main.main-about{
+        background-color: $color3;
         flex-grow: 1;
         font-size: 5rem;
+        padding: 10px 80px;
     }
 }
   

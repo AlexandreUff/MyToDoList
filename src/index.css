@@ -51,10 +51,11 @@
   width: 20px;
   margin-right: 10px;
 }
-.main-container main.main-home {
-  background-color: #FFE194;
+.main-container main.main-home, .main-container main.main-list, .main-container main.main-about {
+  background-color: #E8F6EF;
   flex-grow: 1;
   font-size: 5rem;
+  padding: 10px 80px;
 }
 
 /*# sourceMappingURL=index.css.map */
