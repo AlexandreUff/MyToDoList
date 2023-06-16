@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 62.5%;
+}
+
+$color1: #4C4C6D;
+$color2: #1B9C85;
+$color3: #E8F6EF;
+$color4: #FFE194;
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+        padding: 10px 80px;
+        background-color: $color1;
+        color: $color3;
+        
+        h1 {
+        font-family: 'Lobster';
+        font-size: 4rem;
+        }
+    
+        svg {
+            width: 50px;
+            margin-right: 10px;
+        }
+    }
+    
+    nav {
+        background-color: $color2;
+        color: $color3;
+        padding: 5px 20%;
+        font-size: 4rem;
+        font-family: 'Noto Sans';
+        font-weight: 800;
+        box-shadow: 0px 5px 10px #00000050;
+        z-index: 1;
+    
+        ul{
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+    
+            li {
+                display: flex;
+    
+                svg {
+                    width: 20px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    main.main-home{
+        background-color: $color4;
+        flex-grow: 1;
+        font-size: 5rem;
+    }
+}
+  
