@@ -67,4 +67,16 @@
   flex-grow: 1;
 }
 
+/* Media Queries */
+@media (max-width: 700px) {
+  .main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
+    padding: 10px 30px;
+  }
+}
+@media (max-width: 435px) {
+  .main-container header {
+    padding: 10px 30px;
+  }
+}
+
 /*# sourceMappingURL=index.css.map */
