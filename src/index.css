@@ -63,8 +63,34 @@
 .main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
   background-color: #E8F6EF;
   font-size: 5rem;
-  padding: 10px 80px;
+  padding: 0px 80px;
+  padding-top: 20px;
   flex-grow: 1;
+}
+.main-container .main-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+  border-radius: 8px;
+  border: #4C4C6D solid 2px;
+  background-color: #4C4C6D;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3137254902);
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #E8F6EF;
+  transition: 0.5s;
+}
+.main-container .main-button svg {
+  width: 20px;
+  margin-right: 5px;
+}
+.main-container .main-button:hover {
+  cursor: pointer;
+  border: #4C4C6D solid 2px;
+  color: #4C4C6D;
+  background-color: transparent;
 }
 
 /* Media Queries */
