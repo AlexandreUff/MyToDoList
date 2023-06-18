@@ -7,9 +7,7 @@ export default function MainHome(props){
         <main className="main-home">
             <NavBar />
             <section>
-                <Button title={"Criar uma lista"}>
-                    <IcoStar/> Criar ToDo List
-                </Button>
+                <Button icon={<IcoStar/>} text={"Criar uma lista"} />
             </section>
         </main>
     )
