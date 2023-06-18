@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap");
 * {
@@ -11,6 +12,11 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  /* TALVEZ SEJA INTERESSSANTE PÔR ESSA CLASSE DENTRO DA SECTION */
+  /*
+  TALVEZ FAZER ISSO TAMBÉM COM AS DEMAIS PRA MANTER FIDELIDADE DE POSICIONAMENTO
+  DOS ELEMENOS DENTRO DAS TAGS OS QUAIS FORAM INSERIDOS 
+  */
 }
 .main-container header {
   display: flex;
@@ -172,15 +178,20 @@
 @media (max-width: 455px) {
   .main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
     padding: 20px 5px;
+    justify-content: space-between;
   }
 }
 @media (max-width: 440px) {
+  .main-container {
+    /* main.main-home, main.main-list, main.main-about{
+        section {
+            padding: 20px 5px;
+            justify-content: space-between;
+        }
+    } */
+  }
   .main-container header {
     padding: 10px 30px;
-  }
-  .main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
-    padding: 20px 5px;
-    justify-content: space-between;
   }
   .main-container .list {
     width: 125px;

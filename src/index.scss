@@ -129,6 +129,12 @@ $shadowDefault: 0px 5px 10px #00000050;
         }
     }
 
+    /* TALVEZ SEJA INTERESSSANTE PÔR ESSA CLASSE DENTRO DA SECTION */
+    /*
+    TALVEZ FAZER ISSO TAMBÉM COM AS DEMAIS PRA MANTER FIDELIDADE DE POSICIONAMENTO
+    DOS ELEMENOS DENTRO DAS TAGS OS QUAIS FORAM INSERIDOS 
+    */
+
     .list{
         display: flex;
         justify-content: center;
@@ -227,6 +233,7 @@ $shadowDefault: 0px 5px 10px #00000050;
         main.main-home, main.main-list, main.main-about{
             section {
                 padding: 20px 5px;
+                justify-content: space-between;
             }
         }
     }
@@ -238,12 +245,12 @@ $shadowDefault: 0px 5px 10px #00000050;
             padding: 10px 30px;
         }
 
-        main.main-home, main.main-list, main.main-about{
+        /* main.main-home, main.main-list, main.main-about{
             section {
                 padding: 20px 5px;
                 justify-content: space-between;
             }
-        }
+        } */
 
         .list{  
             width: 125px;
