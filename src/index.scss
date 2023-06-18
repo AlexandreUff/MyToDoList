@@ -222,10 +222,26 @@ $shadowDefault: 0px 5px 10px #00000050;
     }
 }
 
-@media(max-width: 435px){
+@media(max-width: 455px){
+    .main-container{
+        main.main-home, main.main-list, main.main-about{
+            section {
+                padding: 20px 10px;
+            }
+        }
+    }
+}
+
+@media(max-width: 440px){
     .main-container{
         header{
             padding: 10px 30px;
+        }
+
+        main.main-home, main.main-list, main.main-about{
+            section {
+                padding: 20px 10px;
+            }
         }
     }
 }
