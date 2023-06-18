@@ -6,12 +6,12 @@ export default function NavBar(){
         <nav>
             <ul>
                 <li>
-                    <Link to={"/"}>
+                    <Link to={"/"} title="Início">
                         <IcoHouse /> Início
                     </Link>
                 </li>
                 <li>
-                    <Link to={"/about"}>
+                    <Link to={"/about"} title="Sobre">
                         <IcoInfo /> Sobre
                     </Link>
                 </li>

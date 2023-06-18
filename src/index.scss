@@ -85,7 +85,7 @@ $shadowDefault: 0px 5px 10px #00000050;
             padding-top: 20px;
             flex-grow: 1;
 
-            .list-area{
+            .list-area,.item-area{
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
@@ -206,6 +206,74 @@ $shadowDefault: 0px 5px 10px #00000050;
 
             &.second{
                 top: 55%;
+            }
+
+            &:hover{
+                background-color: $color1;
+                color: $color3;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .item{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        border: $color1 solid 5px;
+        border-radius: 20px;
+        color: $color1;
+        box-shadow: $shadowDefault;
+
+        width: 100%;
+        min-height: 60px;
+        padding: 0px 10px;
+        margin: 10px 0px;
+
+        .ico-item-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: $color1;
+            color: $color3;
+
+            svg{
+                width: 60%;
+            }
+        }
+
+        h3{
+            flex-grow: 1;
+            margin: 0px 10px;
+
+            border-right: $color1 solid 3px;
+            height: 50%;
+            
+            font-size: 2rem;
+            font-family: 'Noto Sans';
+        }
+
+        .tools-content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: $color1 solid 3px;
+            color: $color1;
+            margin: 0 5px;
+
+            transition: .5s;
+
+            svg{
+                width: 60%;
             }
 
             &:hover{
