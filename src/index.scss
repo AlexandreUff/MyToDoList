@@ -84,6 +84,14 @@ $shadowDefault: 0px 5px 10px #00000050;
             padding: 0px 80px;
             padding-top: 20px;
             flex-grow: 1;
+
+            .list-area{
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-top: 25px;
+                flex-wrap: wrap;
+            }
         }
     }
 
@@ -118,6 +126,87 @@ $shadowDefault: 0px 5px 10px #00000050;
             border: $color1 solid 2px;
             color: $color1;
             background-color: transparent;
+        }
+    }
+
+    .list{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+
+        border: $color1 solid 5px;
+        border-radius: 10px;
+        color: $color1;
+        box-shadow: $shadowDefault;
+
+        width: 130px;
+        height: 140px;
+
+        font-size: 3rem;
+        font-family: 'Noto Sans';
+        text-align: center;
+
+        padding: 10px 20px 10px 10px;
+        margin: 10px;
+
+        .ico-list-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: absolute;
+            top: -17px;
+            left: 10px;
+
+
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: $color1;
+            color: $color3;
+
+            svg{
+                width: 90%;
+            }
+        }
+
+        .tools-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            position: absolute;
+            right: -20px;
+
+            border: $color1 solid 3px;
+            background-color: $color3;
+            color: $color1;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            z-index: 1;
+
+            transition: .5s;
+
+            svg{
+                width: 60%;
+            }
+
+            &.first{
+                top: 25%;
+            }
+
+            &.second{
+                top: 55%;
+            }
+
+            &:hover{
+                background-color: $color1;
+                color: $color3;
+                cursor: pointer;
+            }
         }
     }
 }
