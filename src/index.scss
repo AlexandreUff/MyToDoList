@@ -296,6 +296,24 @@ $shadowDefault: 0px 5px 10px #00000050;
     }
 }
 
+@media(max-width: 600px){
+    .main-container{
+
+        .item{  
+            padding: 0 5px;
+
+            h3 {
+                margin: 0 5px;
+            }
+
+            .tools-content{
+                margin: 0 1px;
+            }
+        }
+
+    }
+}
+
 @media(max-width: 455px){
     .main-container{
         main.main-home, main.main-list, main.main-about{

@@ -229,6 +229,17 @@
     padding: 20px 30px;
   }
 }
+@media (max-width: 600px) {
+  .main-container .item {
+    padding: 0 5px;
+  }
+  .main-container .item h3 {
+    margin: 0 5px;
+  }
+  .main-container .item .tools-content {
+    margin: 0 1px;
+  }
+}
 @media (max-width: 455px) {
   .main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
     padding: 20px 5px;
