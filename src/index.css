@@ -171,7 +171,7 @@
 }
 @media (max-width: 455px) {
   .main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
-    padding: 20px 10px;
+    padding: 20px 5px;
   }
 }
 @media (max-width: 440px) {
@@ -179,13 +179,14 @@
     padding: 10px 30px;
   }
   .main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
-    padding: 20px 10px;
+    padding: 20px 5px;
+    justify-content: space-between;
   }
   .main-container .list {
     width: 125px;
     height: 135px;
     padding: 10px 17px 10px 7px;
-    margin: 10px;
+    /* margin: 10px; */
   }
 }
 
