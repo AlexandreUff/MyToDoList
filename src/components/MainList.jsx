@@ -1,3 +1,5 @@
+import Button from "./Button";
+import { IcoClipBoardChecked } from "./Icons";
 import NavBar from "./NavBar";
 
 export default function MainHome(props){
@@ -5,7 +7,10 @@ export default function MainHome(props){
         <main className="main-list">
             <NavBar />
             <section>
-                Here are your items!
+                <Button icon={<IcoClipBoardChecked/>} text={"Criar um item"} action={()=>{console.log("itsWorks too")}} />
+                <div className="list-area">
+                    
+                </div>
             </section>
         </main>
     )
