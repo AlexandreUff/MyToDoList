@@ -182,14 +182,6 @@
   }
 }
 @media (max-width: 440px) {
-  .main-container {
-    /* main.main-home, main.main-list, main.main-about{
-        section {
-            padding: 20px 5px;
-            justify-content: space-between;
-        }
-    } */
-  }
   .main-container header {
     padding: 10px 30px;
   }
