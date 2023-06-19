@@ -306,7 +306,11 @@ $shadowDefault: 0px 5px 10px #00000050;
 
         /* Ajustar esse DONE e pôr o botão de envio de e-mail */
 
-        .tools-content{
+        /* .ico-list-content{
+            border: $color1 solid 3px;
+        } */
+
+        .tools-content,.ico-list-content{
             border: $color3 solid 3px;
             background-color: $color2;
             color: $color3;

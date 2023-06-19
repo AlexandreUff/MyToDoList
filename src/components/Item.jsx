@@ -2,7 +2,7 @@ import { /* IcoClipBoardEmpty, */ IcoEdit, IcoTrash } from "./Icons";
 
 export default function Item(props){
     return (
-        <div className="item done">
+        <div className="item">
             <input type="checkbox" />
             <h3>
                 {props.text}
