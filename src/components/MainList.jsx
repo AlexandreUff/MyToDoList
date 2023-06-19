@@ -45,9 +45,9 @@ export default function MainHome(props){
                     <Button icon={<IcoEmail/>} text={"Enviar esta lista por e-mail"} action={()=>{console.log("itsWorks too")}} />
                 </div>
                 <div className="item-area">
-                    <Item text="Este é um item very bom demais da conta partner"/>
-                    <Item text="Este é um item very bom demais da conta partner"/>
-                    <Item text="Este é um item very bom demais da conta partner"/>
+                    <Item text="Este é um item very bom demais da conta partner" />
+                    <Item text="Este é um item very bom demais da conta partner" />
+                    <Item text="Este é um item very bom demais da conta partner" />
                 </div>
             </section>
             {modal && createListModal()}

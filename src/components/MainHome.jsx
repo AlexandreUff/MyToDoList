@@ -11,7 +11,7 @@ export default function MainHome(props){
 
     const createListModal = () => {
         return (
-            <FlexModal message={"Você deseja criar uma nova lista?"}>
+            <FlexModal message={"Digite o nome de sua nova lista:"}>
                 <input type="text" style={{
                     background:"transparent",
                     width:"90%",

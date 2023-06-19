@@ -8,8 +8,8 @@ export default function Item(props){
     }
 
     return (
-        <div className="item">
-            <input type="checkbox" onChange={e => checkItem(e)} />
+        <div className={`item ${props.done && "done"}`}>
+            <input type="checkbox" onChange={e => checkItem(e)} checked={props.done} />
             <h3>
                 {props.text}
             </h3>
