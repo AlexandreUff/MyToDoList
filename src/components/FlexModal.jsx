@@ -10,9 +10,8 @@ export default function FlexModal(props){
                 <h3>
                     {props.message}
                 </h3>
-                <div>
-                    {/* {props.children} */}
-                    <input type="text" />
+                <div className="children-content">
+                    {props.children}
                 </div>
             </div>
         </div>

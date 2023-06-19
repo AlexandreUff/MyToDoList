@@ -283,8 +283,9 @@
   flex-direction: column;
   position: relative;
   width: 300px;
-  height: 150px;
+  min-height: 150px;
   padding: 5px;
+  margin: 0 5px;
   border: #E8F6EF solid 5px;
   border-radius: 15px;
   background-color: #1B9C85;
@@ -296,6 +297,9 @@
 }
 .main-container .ground-modal .modal h3 {
   margin-bottom: 10px;
+}
+.main-container .ground-modal .modal .children-content {
+  width: 100%;
 }
 .main-container .ground-modal .modal .ico-content {
   position: absolute;
