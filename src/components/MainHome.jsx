@@ -1,4 +1,5 @@
 import Button from "./Button";
+import FlexModal from "./FlexModal";
 import { IcoStar } from "./Icons";
 import List from "./List";
 import NavBar from "./NavBar";
@@ -21,6 +22,7 @@ export default function MainHome(props){
                     <List text="Capinar um lote esta semana porque o negócio" />
                 </div>
             </section>
+            <FlexModal/>
         </main>
     )
 }
