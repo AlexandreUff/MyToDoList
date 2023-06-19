@@ -268,13 +268,12 @@
   left: 0px;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
   transition: 1s;
 }
 .main-container .ground-modal.effect {
   backdrop-filter: blur(4px);
-  background-color: rgba(0, 0, 0, 0.5);
 }
 .main-container .ground-modal .modal {
   display: flex;

@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import { IcoExclamation } from "./Icons";
 
 export default function FlexModal(props){
+
+    useEffect(()=>{
+        const modalGround = document.querySelector(".ground-modal")
+        setTimeout(()=>{modalGround.classList.toggle("effect")},50)
+        
+    },[])
+
     return (
-        <div className="ground-modal effect">
+        <div className="ground-modal">
             <div className="modal">
                 <div className="ico-content">
                     <IcoExclamation />

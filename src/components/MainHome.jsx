@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "./Button";
 import FlexModal from "./FlexModal";
 import { IcoCheckConfirm, IcoStar, IcoX } from "./Icons";
@@ -5,23 +6,11 @@ import List from "./List";
 import NavBar from "./NavBar";
 
 export default function MainHome(props){
-    return (
-        <main className="main-home">
-            <NavBar />
-            <section>
-                <Button icon={<IcoStar/>} text={"Criar uma lista"} action={()=>{console.log("itsWorks")}} />
-                <div className="list-area">
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                    <List text="Capinar um lote esta semana porque o negócio" />
-                </div>
-            </section>
+
+    const [modal, setModal] = useState(false)
+
+    const createListModal = () => {
+        return (
             <FlexModal message={"Você deseja criar uma nova lista?"}>
                 <input type="text" style={{
                     background:"transparent",
@@ -41,9 +30,30 @@ export default function MainHome(props){
                     marginTop:"10px",
                 }}>
                     <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={()=>{console.log("itsWorks")}} />
-                    <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{console.log("itsWorks")}} />
+                    <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setModal(!modal)}} />
                 </div>
             </FlexModal>
+        )
+    }
+
+    return (
+        <main className="main-home">
+            <NavBar />
+            <section>
+                <Button icon={<IcoStar/>} text={"Criar uma lista"} action={()=>{setModal(!modal)}} />
+                <div className="list-area">
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                    <List text="Capinar um lote esta semana porque o negócio" />
+                </div>
+            </section>
+            {modal && createListModal()}
         </main>
     )
 }
