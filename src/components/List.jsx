@@ -6,10 +6,10 @@ export default function List(props){
             <div className="ico-list-content">
                 <IcoClip/>
             </div>
-            <button className="tools-content first" title="Excluir lista">
+            <button className="tools-content first" title="Excluir lista" onClick={props.deleteMethod}>
                 <IcoTrash />
             </button>
-            <button className="tools-content second" title="Editar lista">
+            <button className="tools-content second" title="Editar lista" onClick={props.editMethod}>
                 <IcoEdit />
             </button>
             <h2>
