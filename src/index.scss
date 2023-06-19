@@ -231,9 +231,15 @@ $shadowDefault: 0px 5px 10px #00000050;
         padding: 0px 10px;
         margin: 10px 0px;
 
+        transition: .5s;
+
         input[type="checkbox"]{
             transform: scale(1);
             margin-left: 5px;
+
+            &:hover{
+                cursor: pointer;
+            }
 
             &::after{
                 width: 100%;
@@ -289,6 +295,34 @@ $shadowDefault: 0px 5px 10px #00000050;
                 background-color: $color1;
                 color: $color3;
                 cursor: pointer;
+            }
+        }
+    }
+
+    .done{
+        border: $color2 solid 5px;
+        background-color: $color2;
+        color: $color3;
+
+        /* Ajustar esse DONE e pôr o botão de envio de e-mail */
+
+        .tools-content{
+            border: $color3 solid 3px;
+            background-color: $color2;
+            color: $color3;
+        }
+
+        h3{
+            border-right: $color3 solid 3px;
+        }
+
+        /* Remover  verão checked anterior */
+        input[type="checkbox"]{
+            &:checked::after{
+                content: "✓";
+                background-color: $color2;
+                color: $color3;
+                border: $color3 solid 2px;
             }
         }
     }
