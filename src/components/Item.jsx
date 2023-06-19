@@ -1,11 +1,9 @@
-import { IcoClipBoardEmpty, IcoEdit, IcoTrash } from "./Icons";
+import { /* IcoClipBoardEmpty, */ IcoEdit, IcoTrash } from "./Icons";
 
 export default function Item(props){
     return (
-        <div className="item">
-            <div className="ico-item-content">
-                <IcoClipBoardEmpty />
-            </div>
+        <div className="item done">
+            <input type="checkbox" />
             <h3>
                 {props.text}
             </h3>
