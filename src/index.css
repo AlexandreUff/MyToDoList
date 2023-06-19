@@ -73,6 +73,10 @@
   padding-top: 20px;
   flex-grow: 1;
 }
+.main-container main.main-home section .buttons-content, .main-container main.main-list section .buttons-content, .main-container main.main-about section .buttons-content {
+  display: flex;
+  justify-content: space-between;
+}
 .main-container main.main-home section .list-area, .main-container main.main-home section .item-area, .main-container main.main-list section .list-area, .main-container main.main-list section .item-area, .main-container main.main-about section .list-area, .main-container main.main-about section .item-area {
   display: flex;
   justify-content: flex-start;
