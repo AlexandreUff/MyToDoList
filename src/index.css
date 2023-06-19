@@ -280,6 +280,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  position: relative;
   width: 300px;
   height: 150px;
   padding: 5px;
@@ -291,6 +293,20 @@
   font-family: "Noto Sans";
   text-align: center;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3137254902);
+}
+.main-container .ground-modal .modal .ico-content {
+  position: absolute;
+  top: -20px;
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: #E8F6EF solid 3px;
+  background-color: #1B9C85;
+}
+.main-container .ground-modal .modal .ico-content svg {
+  width: 100%;
+  color: #E8F6EF;
 }
 
 /* Media Queries */
