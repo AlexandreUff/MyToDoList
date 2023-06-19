@@ -294,6 +294,9 @@
   text-align: center;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3137254902);
 }
+.main-container .ground-modal .modal h3 {
+  margin-bottom: 10px;
+}
 .main-container .ground-modal .modal .ico-content {
   position: absolute;
   top: -20px;

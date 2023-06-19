@@ -22,7 +22,7 @@ export default function MainHome(props){
                     <List text="Capinar um lote esta semana porque o negócio" />
                 </div>
             </section>
-            <FlexModal/>
+            <FlexModal message={"Você deseja criar uma nova lista?"} />
         </main>
     )
 }

@@ -8,8 +8,7 @@ export default function FlexModal(props){
                     <IcoExclamation />
                 </div>
                 <h3>
-                    {/* {props.message} */}
-                    Teste testando tudo aqui porque everything induz à lokura
+                    {props.message}
                 </h3>
                 <div>
                     {/* {props.children} */}
