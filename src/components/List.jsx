@@ -2,7 +2,7 @@ import { IcoClip, IcoEdit, IcoTrash } from "./Icons";
 
 export default function List(props){
     return (
-        <div className="list" title={`Nesta lista diz: ${props.text}`}>
+        <div className={`list ${props.done && "done"}`} title={`Nesta lista diz: ${props.text}`}>
             <div className="ico-list-content">
                 <IcoClip/>
             </div>
