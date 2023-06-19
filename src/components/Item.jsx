@@ -1,4 +1,4 @@
-import { /* IcoClipBoardEmpty, */ IcoEdit, IcoTrash } from "./Icons";
+import { IcoEdit, IcoTrash } from "./Icons";
 
 export default function Item(props){
 
