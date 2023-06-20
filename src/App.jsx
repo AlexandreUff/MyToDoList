@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route index element={<MainHome />} />
-          <Route path='/list' element={<MainList />} />
+          <Route path='/list/:listId' element={<MainList />} />
           <Route path='/about' element={<MainAbout />} />
         </Routes>
       </Router>

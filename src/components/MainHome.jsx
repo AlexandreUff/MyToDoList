@@ -147,6 +147,7 @@ export default function MainHome(props){
                                         setEditData(list.id)
                                         setShowDeleteModal(!showDeleteModal)
                                     }}
+                                    linkNav={list.id}
                                 />
                     })}
                 </div>

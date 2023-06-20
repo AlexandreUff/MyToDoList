@@ -1,8 +1,18 @@
 import { IcoClip, IcoEdit, IcoTrash } from "./Icons";
+import { useNavigate } from "react-router-dom"
 
 export default function List(props){
+    const navigate = useNavigate()
+
+    const Navigation = (link) => {
+        navigate(`/list/${link}`)
+    }
+
     return (
-        <div className={`list ${props.done && "done"}`} title={`Nesta lista diz: ${props.text}`}>
+        <div className={`list ${props.done && "done"}`}
+                title={`Nesta lista diz: ${props.text}`}
+                onClick={() => {Navigation(props.linkNav)}}
+            >
             <div className="ico-list-content">
                 <IcoClip/>
             </div>
