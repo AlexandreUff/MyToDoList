@@ -58,7 +58,10 @@ export default function MainHome(props){
 
         const newStorageDatas = [...storageDatas]
         newStorageDatas[listIdToNumber-1].itens.length = 0
-        newStorageDatas[listIdToNumber-1].itens.push(reorderedDatas)
+        Array.prototype.push.apply(
+            newStorageDatas[listIdToNumber-1].itens,
+            reorderedDatas
+        )
 
         console.log("Pré-save", newStorageDatas)
 
@@ -130,6 +133,7 @@ export default function MainHome(props){
                     <Item text="Este é um item very bom demais da conta partner" />
                     <Item text="Este é um item very bom demais da conta partner" /> */}
                     {datas.map((item, i) => {
+                        console.log("OS DADOS:", datas)
                         return <Item
                                     key={i}
                                     text={item.name}
