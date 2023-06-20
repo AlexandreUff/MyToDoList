@@ -5,6 +5,7 @@ export default function Item(props){
     const checkItem = (e) => {
         const parentElement = e.target.parentElement
         parentElement.classList.toggle("done")
+        props.changeStatus()
     }
 
     const handleEvent = (event, action) => {

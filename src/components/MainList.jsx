@@ -52,7 +52,7 @@ export default function MainHome(props){
         newDatas.splice(dataHandler-1, 1)
         const reorderedDatas = newDatas.map((newData, i) => {
             return {...newData, id: i+1}
-        })
+        }) /* Passa reorderedDatas como parametro */
 
         const newStorageDatas = [...storageDatas]
         newStorageDatas[listIdToNumber-1].itens.length = 0
@@ -71,9 +71,9 @@ export default function MainHome(props){
         setShowDeleteModal(!showDeleteModal)
     }
 
-    const editData = () => {
-        const newDatas = [...datas]
-        newDatas[dataHandler.id-1].name = dataHandler.name
+    const editData = (newDatas) => {
+        /* const newDatas = [...datas]
+        newDatas[dataHandler.id-1].name = dataHandler.name */
 
         const newStorageDatas = [...storageDatas]
         newStorageDatas[listIdToNumber-1].itens.length = 0
@@ -89,7 +89,22 @@ export default function MainHome(props){
         )
 
         setDatas([...newDatas])
+        /* setShowEditModal(!showEditModal) */
+    }
+
+    const changeName = () => {
+        const newDatas = [...datas]
+        newDatas[dataHandler.id-1].name = dataHandler.name
+
+        editData(newDatas)
         setShowEditModal(!showEditModal)
+    }
+
+    const changeStatus = (id) => {
+        const newDatas = [...datas]
+        newDatas[id].isDone = !newDatas[id].isDone
+        
+        editData(newDatas)
     }
 
     const createItemModal = () => {
@@ -147,7 +162,7 @@ export default function MainHome(props){
                     alignItems:"center",
                     marginTop:"10px",
                 }}>
-                    <Button icon={<IcoCheckConfirm/>} text={"Alterar"} action={editData} />
+                    <Button icon={<IcoCheckConfirm/>} text={"Alterar"} action={changeName} />
                     <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowEditModal(!showEditModal)}} />
                 </div>
             </FlexModal>
@@ -193,6 +208,9 @@ export default function MainHome(props){
                                     deleteMethod={() => {
                                         setDataHandler(item.id)
                                         setShowDeleteModal(!showDeleteModal)
+                                    }}
+                                    changeStatus={() => {
+                                        changeStatus(i)
                                     }}
                                     done={item.isDone}
                                 />
