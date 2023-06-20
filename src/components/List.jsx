@@ -9,7 +9,7 @@ export default function List(props){
             <button className="tools-content first" title="Excluir lista" onClick={props.deleteMethod}>
                 <IcoTrash />
             </button>
-            <button className="tools-content second" title="Editar lista" onClick={props.editMethod}>
+            <button className="tools-content second" title="Editar lista" onClick={() =>  props.editMethod(1,props.text)}>
                 <IcoEdit />
             </button>
             <h2>
