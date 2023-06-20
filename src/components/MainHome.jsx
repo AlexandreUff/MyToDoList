@@ -4,7 +4,6 @@ import FlexModal from "./FlexModal";
 import { IcoCheckConfirm, IcoStar, IcoX } from "./Icons";
 import List from "./List";
 import NavBar from "./NavBar";
-import { MockList } from "../utils/MockList";
 import StorageService from "../services/StorageService";
 
 export default function MainHome(props){
@@ -19,6 +18,7 @@ export default function MainHome(props){
     useEffect(() => {
         const datas = StorageService.get("todo")
         if(datas) setDatas([...datas])
+        console.log("Todos os dados", datas)
     },[])
 
     useEffect(()=>{
@@ -50,13 +50,16 @@ export default function MainHome(props){
         newDatas.splice(editData-1, 1)
         console.log("Indice", editData)
         console.log("dados antigos", datas)
-        console.log("dados novos", newDatas)
+        const reorderedDatas = newDatas.map((newData, i) => {
+            return {...newData, id: i+1}
+        })
+
         StorageService.save("todo",
-            [
-            ...newDatas
-            ]
+                [...reorderedDatas]
         )
-        setDatas([...newDatas])
+        console.log("dados novos", reorderedDatas)
+
+        setDatas([...reorderedDatas])
         setShowDeleteModal(!showDeleteModal)
     }
 
