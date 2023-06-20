@@ -100,8 +100,11 @@ export default function MainHome(props){
                     fontSize:"2rem",
                     fontWeight: "600"
                     }}
-                    value={datas.name}
-                    onChange={e => setEditData(e.target.value)}
+                    value={editData.name}
+                    onChange={e => setEditData({
+                        id: editData.id,
+                        name: e.target.value
+                    })}
                 />
                 <div style={{
                     display:"flex",
@@ -142,7 +145,12 @@ export default function MainHome(props){
                         return <List
                                     key={i}
                                     text={list.name}
-                                    editMethod={(id, name) => setEditData({id, name})}
+                                    editMethod={() => {
+                                        setEditData({
+                                            id: list.id, name:list.name
+                                        })
+                                        setShowEditModal(!showEditModal)
+                                    }}
                                     deleteMethod={() => {
                                         setEditData(list.id)
                                         setShowDeleteModal(!showDeleteModal)
@@ -153,7 +161,7 @@ export default function MainHome(props){
                 </div>
             </section>
             {showCreateModal && createListModal()}
-            {showEditModal && (editData && editListModal(editData))}
+            {showEditModal && editListModal(editData) /* (editData && editListModal(editData)) */}
             {showDeleteModal && deleteListModal()}
         </main>
     )

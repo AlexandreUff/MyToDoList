@@ -8,6 +8,11 @@ export default function List(props){
         navigate(`/list/${link}`)
     }
 
+    const handleEvent = (event, action) => {
+        event.stopPropagation()
+        action()
+    }
+
     return (
         <div className={`list ${props.done && "done"}`}
                 title={`Nesta lista diz: ${props.text}`}
@@ -16,10 +21,10 @@ export default function List(props){
             <div className="ico-list-content">
                 <IcoClip/>
             </div>
-            <button className="tools-content first" title="Excluir lista" onClick={props.deleteMethod}>
+            <button className="tools-content first" title="Excluir lista" onClick={(e) => {handleEvent(e, props.deleteMethod)}}>
                 <IcoTrash />
             </button>
-            <button className="tools-content second" title="Editar lista" onClick={() =>  props.editMethod(1,props.text)}>
+            <button className="tools-content second" title="Editar lista" onClick={(e) => {handleEvent(e, () =>  props.editMethod(1,props.text))}}>
                 <IcoEdit />
             </button>
             <h2>
