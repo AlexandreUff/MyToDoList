@@ -85,19 +85,6 @@ export default function MainHome(props) {
   };
 
   const renderItems = () => {
-
-    /* const unfinishedItems = datas.filter(data => {
-        return data.isDone === false
-    })
-
-    const completedItems = datas.filter(data => {
-        return data.isDone === true
-    })
-
-    const allItems = unfinishedItems.concat(completedItems)
-
-    console.log("todes, amigues", allItems) */
-
     return datas.map((item, i) => {
       return (
         <Item
