@@ -17,7 +17,10 @@ export default function MainHome(props){
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [datas, setDatas] = useState([])
 
+    const [dataHandler, setDataHandler] = useState("")
+
     const storageDatas = StorageService.get("todo")
+    console.log("CONSTANTE:", storageDatas)
 
     useEffect(() => {
         console.log("itens", storageDatas)
@@ -29,6 +32,7 @@ export default function MainHome(props){
         const dataToSave = {
             id: datas.length+1,
             name: inputValue.value,
+            isDone: false,
             order: datas.length+1,
         }
 
@@ -43,6 +47,29 @@ export default function MainHome(props){
         )
         setDatas([...datas, dataToSave])
         setShowCreateModal(!showCreateModal)
+    }
+
+    const removeData = () => {
+        const newDatas = [...datas]
+        newDatas.splice(dataHandler-1, 1)
+        const reorderedDatas = newDatas.map((newData, i) => {
+            return {...newData, id: i+1}
+        })
+
+        const newStorageDatas = [...storageDatas]
+        newStorageDatas[listIdToNumber-1].itens.length = 0
+        newStorageDatas[listIdToNumber-1].itens.push(reorderedDatas)
+
+        console.log("Pré-save", newStorageDatas)
+
+        StorageService.save("todo",
+            [
+                ...newStorageDatas,
+            ]
+        )
+
+        setDatas([...reorderedDatas])
+        setShowDeleteModal(!showDeleteModal)
     }
 
     const createItemModal = () => {
@@ -74,6 +101,22 @@ export default function MainHome(props){
         )
     }
 
+    const deleteItemModal = () => {
+        return (
+            <FlexModal message={"Tem certeza que deseja excluir este item?"}>
+                <div style={{
+                    display:"flex",
+                    justifyContent:"space-evenly",
+                    alignItems:"center",
+                    marginTop:"10px",
+                }}>
+                    <Button icon={<IcoCheckConfirm/>} text={"Remover"} action={()=>{removeData()}} />
+                    <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowDeleteModal(!showDeleteModal)}} />
+                </div>
+            </FlexModal>
+        )
+    }
+
     return (
         <main className="main-list">
             <NavBar />
@@ -98,14 +141,15 @@ export default function MainHome(props){
                                         setShowEditModal(!showEditModal) */
                                     }}
                                     deleteMethod={() => {
-                                        /* setDataHandler(item.id)
-                                        setShowDeleteModal(!showDeleteModal) */
+                                        setDataHandler(item.id)
+                                        setShowDeleteModal(!showDeleteModal)
                                     }}
                                 />
                     })}
                 </div>
             </section>
             {showCreateModal && createItemModal()}
+            {showDeleteModal && deleteItemModal()}
         </main>
     )
 }
