@@ -5,19 +5,44 @@ import { IcoCheckConfirm, IcoStar, IcoX } from "./Icons";
 import List from "./List";
 import NavBar from "./NavBar";
 import { MockList } from "../utils/MockList";
+import StorageService from "../services/StorageService";
 
 export default function MainHome(props){
 
     const [showCreateModal, setShowCreateModal] = useState(false)
     const [showEditModal, setShowEditModal] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const [datas, setDatas] = useState([])
 
     const [editData, setEditData] = useState("")
+
+    useEffect(() => {
+        const datas = StorageService.get("todo")
+        if(datas) setDatas([...datas])
+    },[])
 
     useEffect(()=>{
         console.log(editData)
         setShowEditModal(!showEditModal)
     },[editData])
+
+    const saveData = () => {
+        const inputValue = document.getElementById("create-list")
+        const dataToSave = {
+            id: datas.length+1,
+            name: inputValue.value,
+            itens: []
+        }
+
+        StorageService.save("todo",
+            [
+            ...datas,
+                dataToSave
+            ]
+        )
+        setDatas([...datas, dataToSave])
+        setShowCreateModal(!showCreateModal)
+    }
 
     const teste = [
         {
@@ -72,14 +97,16 @@ export default function MainHome(props){
                     color:"#E8F6EF",
                     fontSize:"2rem",
                     fontWeight: "600"
-                }} />
+                }}
+                    id="create-list"
+                 />
                 <div style={{
                     display:"flex",
                     justifyContent:"space-evenly",
                     alignItems:"center",
                     marginTop:"10px",
                 }}>
-                    <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={()=>{console.log("itsWorks")}} />
+                    <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={()=>{saveData()}} />
                     <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowCreateModal(!showCreateModal)}} />
                 </div>
             </FlexModal>
@@ -142,8 +169,9 @@ export default function MainHome(props){
                         editMethod={() => setShowEditModal(!showEditModal)}
                         deleteMethod={() => setShowDeleteModal(!showDeleteModal)}
                     /> */}
-                    {teste.map(list => {
+                    {datas.map((list, i) => {
                         return <List
+                                    key={i}
                                     text={list.name}
                                     editMethod={(id, name) => setEditData({id, name})}
                                 />
