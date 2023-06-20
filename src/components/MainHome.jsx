@@ -57,6 +57,18 @@ export default function MainHome(props){
         setShowDeleteModal(!showDeleteModal)
     }
 
+    const editListData = () => {
+        const newDatas = [...datas]
+        newDatas[editData.id-1].name = editData.name
+
+        StorageService.save("todo",
+                [...newDatas]
+        )
+
+        setDatas([...newDatas])
+        setShowEditModal(!showEditModal)
+    }
+
     const createListModal = () => {
         return (
             <FlexModal message={"Digite o nome de sua nova lista:"}>
@@ -112,7 +124,7 @@ export default function MainHome(props){
                     alignItems:"center",
                     marginTop:"10px",
                 }}>
-                    <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={()=>{console.log("itsWorks")}} />
+                    <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={editListData} />
                     <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowEditModal(!showEditModal)}} />
                 </div>
             </FlexModal>
