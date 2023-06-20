@@ -20,9 +20,9 @@ export default function MainHome(props){
         if(datas) setDatas([...datas])
     },[])
 
-    useEffect(()=>{
+    /* useEffect(()=>{
         setShowEditModal(!showEditModal)
-    },[editData])
+    },[editData]) */
 
     const saveData = () => {
         const inputValue = document.getElementById("create-list")
