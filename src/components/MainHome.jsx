@@ -22,7 +22,7 @@ export default function MainHome(props){
     },[])
 
     useEffect(()=>{
-        console.log(editData)
+        console.log("SHOWME", editData)
         setShowEditModal(!showEditModal)
     },[editData])
 
@@ -42,47 +42,23 @@ export default function MainHome(props){
         )
         setDatas([...datas, dataToSave])
         setShowCreateModal(!showCreateModal)
+        console.log("DADOS TOTAIS:",datas.length)
     }
 
-    const teste = [
-        {
-            id: 1,
-            name: "Alimentação",
-            permalink: "/list/test-2",
-            itens: [
-                {
-                    id: 1,
-                    name: "Beber água",
-                    isDone: false
-                },{
-                    id: 2,
-                    name: "Tomar suplemento",
-                    isDone: false
-                },
-                {
-                    id: 3,
-                    name: "Comer frutas",
-                    isDone: false
-                }
+    const removeData = () => {
+        const newDatas = [...datas]
+        newDatas.splice(editData-1, 1)
+        console.log("Indice", editData)
+        console.log("dados antigos", datas)
+        console.log("dados novos", newDatas)
+        StorageService.save("todo",
+            [
+            ...newDatas
             ]
-        },
-        {
-            id: 2,
-            name: "Exercícios",
-            permalink: "/list/exerc",
-            itens: [
-                {
-                    id: 1,
-                    name: "Alongar",
-                    isDone: false
-                },{
-                    id: 2,
-                    name: "Ir à academia",
-                    isDone: false
-                },
-            ]
-        },
-    ]
+        )
+        setDatas([...newDatas])
+        setShowDeleteModal(!showDeleteModal)
+    }
 
     const createListModal = () => {
         return (
@@ -128,6 +104,7 @@ export default function MainHome(props){
                     fontWeight: "600"
                     }}
                     value={datas.name}
+                    onChange={e => setEditData(e.target.value)}
                 />
                 <div style={{
                     display:"flex",
@@ -151,7 +128,7 @@ export default function MainHome(props){
                     alignItems:"center",
                     marginTop:"10px",
                 }}>
-                    <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={()=>{console.log("itsWorks")}} />
+                    <Button icon={<IcoCheckConfirm/>} text={"Remover"} action={()=>{removeData()}} />
                     <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowDeleteModal(!showDeleteModal)}} />
                 </div>
             </FlexModal>
@@ -164,16 +141,16 @@ export default function MainHome(props){
             <section>
                 <Button icon={<IcoStar/>} text={"Criar uma lista"} action={()=>{setShowCreateModal(!showCreateModal)}} />
                 <div className="list-area">
-                    {/* <List
-                        text="Capinar um lote esta semana porque o negócio"
-                        editMethod={() => setShowEditModal(!showEditModal)}
-                        deleteMethod={() => setShowDeleteModal(!showDeleteModal)}
-                    /> */}
                     {datas.map((list, i) => {
                         return <List
                                     key={i}
                                     text={list.name}
                                     editMethod={(id, name) => setEditData({id, name})}
+                                    deleteMethod={() => {
+                                        setEditData(list.id)
+                                        console.log("Na hora de deletar",list.id)
+                                        setShowDeleteModal(!showDeleteModal)
+                                    }}
                                 />
                     })}
                 </div>
