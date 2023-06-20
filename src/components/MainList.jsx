@@ -21,6 +21,8 @@ export default function MainHome(props){
 
     const storageDatas = StorageService.get("todo")
 
+    const listName = storageDatas[listIdToNumber-1].name
+
     useEffect(() => {
         if(storageDatas) setDatas([...storageDatas[listIdToNumber-1].itens])
     },[])
@@ -173,6 +175,9 @@ export default function MainHome(props){
         <main className="main-list">
             <NavBar />
             <section>
+                <h3 className="list-page-title">
+                    Lista: {listName}
+                </h3>
                 <div className="buttons-content">
                     <Button icon={<IcoClipBoardChecked/>} text={"Criar um item"} action={()=>{setShowCreateModal(!showCreateModal)}} />
                     <Button icon={<IcoEmail/>} text={"Enviar esta lista por e-mail"} action={()=>{console.log("itsWorks too")}} />

@@ -77,6 +77,15 @@
   display: flex;
   justify-content: space-between;
 }
+.main-container main.main-home section .buttons-content button, .main-container main.main-list section .buttons-content button, .main-container main.main-about section .buttons-content button {
+  margin: 2px;
+}
+.main-container main.main-home section h3.list-page-title, .main-container main.main-list section h3.list-page-title, .main-container main.main-about section h3.list-page-title {
+  font-family: "Noto Sans";
+  text-align: center;
+  color: #1B9C85;
+  margin-bottom: 10px;
+}
 .main-container main.main-home section .list-area, .main-container main.main-home section .item-area, .main-container main.main-list section .list-area, .main-container main.main-list section .item-area, .main-container main.main-about section .list-area, .main-container main.main-about section .item-area {
   display: flex;
   justify-content: flex-start;
@@ -334,6 +343,14 @@
   }
   .main-container .item .tools-content {
     margin: 0 1px;
+  }
+}
+@media (max-width: 475px) {
+  .buttons-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 @media (max-width: 455px) {

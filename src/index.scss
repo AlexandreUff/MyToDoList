@@ -88,6 +88,17 @@ $shadowDefault: 0px 5px 10px #00000050;
             .buttons-content{
                 display: flex;
                 justify-content: space-between;
+
+                button {
+                    margin: 2px;
+                }
+            }
+
+            h3.list-page-title {
+                font-family: 'Noto Sans';
+                text-align: center;
+                color: $color2;
+                margin-bottom: 10px;
             }
 
             .list-area,.item-area{
@@ -428,6 +439,15 @@ $shadowDefault: 0px 5px 10px #00000050;
             }
         }
 
+    }
+}
+
+@media(max-width: 475px){
+    .buttons-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
     }
 }
 
