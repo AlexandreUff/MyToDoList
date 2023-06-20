@@ -17,7 +17,7 @@ export default function MainHome(props){
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [datas, setDatas] = useState([])
 
-    const [dataHandler, setDataHandler] = useState("")
+    const [dataToBeHandled, setDataToBeHandled] = useState("")
 
     const storageDatas = StorageService.get("todo")
 
@@ -47,34 +47,7 @@ export default function MainHome(props){
         setShowCreateModal(!showCreateModal)
     }
 
-    const removeData = () => {
-        const newDatas = [...datas]
-        newDatas.splice(dataHandler-1, 1)
-        const reorderedDatas = newDatas.map((newData, i) => {
-            return {...newData, id: i+1}
-        }) /* Passa reorderedDatas como parametro */
-
-        const newStorageDatas = [...storageDatas]
-        newStorageDatas[listIdToNumber-1].itens.length = 0
-        Array.prototype.push.apply(
-            newStorageDatas[listIdToNumber-1].itens,
-            reorderedDatas
-        )
-
-        StorageService.save("todo",
-            [
-                ...newStorageDatas,
-            ]
-        )
-
-        setDatas([...reorderedDatas])
-        setShowDeleteModal(!showDeleteModal)
-    }
-
-    const editData = (newDatas) => {
-        /* const newDatas = [...datas]
-        newDatas[dataHandler.id-1].name = dataHandler.name */
-
+    const dataHandler = (newDatas) => {
         const newStorageDatas = [...storageDatas]
         newStorageDatas[listIdToNumber-1].itens.length = 0
         Array.prototype.push.apply(
@@ -89,14 +62,25 @@ export default function MainHome(props){
         )
 
         setDatas([...newDatas])
-        /* setShowEditModal(!showEditModal) */
+    }
+
+    const removeData = () => {
+        const newDatas = [...datas]
+        newDatas.splice(dataToBeHandled-1, 1)
+        const reorderedDatas = newDatas.map((newData, i) => {
+            return {...newData, id: i+1}
+        })
+
+        dataHandler(reorderedDatas)
+
+        setShowDeleteModal(!showDeleteModal)
     }
 
     const changeName = () => {
         const newDatas = [...datas]
-        newDatas[dataHandler.id-1].name = dataHandler.name
+        newDatas[dataToBeHandled.id-1].name = dataToBeHandled.name
 
-        editData(newDatas)
+        dataHandler(newDatas)
         setShowEditModal(!showEditModal)
     }
 
@@ -104,7 +88,7 @@ export default function MainHome(props){
         const newDatas = [...datas]
         newDatas[id].isDone = !newDatas[id].isDone
         
-        editData(newDatas)
+        dataHandler(newDatas)
     }
 
     const createItemModal = () => {
@@ -150,9 +134,9 @@ export default function MainHome(props){
                     fontSize:"2rem",
                     fontWeight: "600"
                     }}
-                    value={dataHandler.name}
-                    onChange={e => setDataHandler({
-                        id: dataHandler.id,
+                    value={dataToBeHandled.name}
+                    onChange={e => setDataToBeHandled({
+                        id: dataToBeHandled.id,
                         name: e.target.value
                     })}
                 />
@@ -199,14 +183,14 @@ export default function MainHome(props){
                                     key={i}
                                     text={item.name}
                                     editMethod={() => {
-                                        setDataHandler({
+                                        setDataToBeHandled({
                                             id: item.id,
                                             name:item.name
                                         })
                                         setShowEditModal(!showEditModal)
                                     }}
                                     deleteMethod={() => {
-                                        setDataHandler(item.id)
+                                        setDataToBeHandled(item.id)
                                         setShowDeleteModal(!showDeleteModal)
                                     }}
                                     changeStatus={() => {
