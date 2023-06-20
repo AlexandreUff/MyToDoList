@@ -22,9 +22,15 @@ export default function MainHome(props) {
 
   const listName = storageDatas[listIdToNumber - 1].name;
 
-  useEffect(() => {
+  /* useEffect(() => {      ENTENDER ISSO AQUI
     if (storageDatas) setDatas([...storageDatas[listIdToNumber - 1].itens]);
-  }, []);
+  }, []); */
+
+  useEffect(() => {
+    if (storageDatas && JSON.stringify(storageDatas[listIdToNumber - 1].itens) !== JSON.stringify(datas)) {
+      setDatas([...storageDatas[listIdToNumber - 1].itens]);
+    }
+  }, [storageDatas, listIdToNumber, datas]);
 
   const saveData = () => {
     const inputValue = document.getElementById("create-list");
