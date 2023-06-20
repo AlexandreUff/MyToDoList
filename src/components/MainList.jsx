@@ -20,10 +20,8 @@ export default function MainHome(props){
     const [dataHandler, setDataHandler] = useState("")
 
     const storageDatas = StorageService.get("todo")
-    console.log("CONSTANTE:", storageDatas)
 
     useEffect(() => {
-        console.log("itens", storageDatas)
         if(storageDatas) setDatas([...storageDatas[listIdToNumber-1].itens])
     },[])
 
@@ -63,8 +61,6 @@ export default function MainHome(props){
             reorderedDatas
         )
 
-        console.log("Pré-save", newStorageDatas)
-
         StorageService.save("todo",
             [
                 ...newStorageDatas,
@@ -73,6 +69,27 @@ export default function MainHome(props){
 
         setDatas([...reorderedDatas])
         setShowDeleteModal(!showDeleteModal)
+    }
+
+    const editData = () => {
+        const newDatas = [...datas]
+        newDatas[dataHandler.id-1].name = dataHandler.name
+
+        const newStorageDatas = [...storageDatas]
+        newStorageDatas[listIdToNumber-1].itens.length = 0
+        Array.prototype.push.apply(
+            newStorageDatas[listIdToNumber-1].itens,
+            newDatas
+        )
+
+        StorageService.save("todo",
+            [
+                ...newStorageDatas,
+            ]
+        )
+
+        setDatas([...newDatas])
+        setShowEditModal(!showEditModal)
     }
 
     const createItemModal = () => {
@@ -104,6 +121,39 @@ export default function MainHome(props){
         )
     }
 
+    const editItemModal = () => {
+        return (
+            <FlexModal message={"Altere o nome do item:"}>
+                <input type="text" style={{
+                    background:"transparent",
+                    width:"90%",
+                    height:"25px",
+                    borderRadius:"5px",
+                    border:"#E8F6EF solid 3px",
+                    textAlign:"center",
+                    color:"#E8F6EF",
+                    fontSize:"2rem",
+                    fontWeight: "600"
+                    }}
+                    value={dataHandler.name}
+                    onChange={e => setDataHandler({
+                        id: dataHandler.id,
+                        name: e.target.value
+                    })}
+                />
+                <div style={{
+                    display:"flex",
+                    justifyContent:"space-evenly",
+                    alignItems:"center",
+                    marginTop:"10px",
+                }}>
+                    <Button icon={<IcoCheckConfirm/>} text={"Alterar"} action={editData} />
+                    <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowEditModal(!showEditModal)}} />
+                </div>
+            </FlexModal>
+        )
+    }
+
     const deleteItemModal = () => {
         return (
             <FlexModal message={"Tem certeza que deseja excluir este item?"}>
@@ -129,30 +179,28 @@ export default function MainHome(props){
                     <Button icon={<IcoEmail/>} text={"Enviar esta lista por e-mail"} action={()=>{console.log("itsWorks too")}} />
                 </div>
                 <div className="item-area">
-                    {/* <Item text="Este é um item very bom demais da conta partner" />
-                    <Item text="Este é um item very bom demais da conta partner" />
-                    <Item text="Este é um item very bom demais da conta partner" /> */}
                     {datas.map((item, i) => {
-                        console.log("OS DADOS:", datas)
                         return <Item
                                     key={i}
                                     text={item.name}
                                     editMethod={() => {
-                                        /* setDataHandler({
+                                        setDataHandler({
                                             id: item.id,
                                             name:item.name
                                         })
-                                        setShowEditModal(!showEditModal) */
+                                        setShowEditModal(!showEditModal)
                                     }}
                                     deleteMethod={() => {
                                         setDataHandler(item.id)
                                         setShowDeleteModal(!showDeleteModal)
                                     }}
+                                    done={item.isDone}
                                 />
                     })}
                 </div>
             </section>
             {showCreateModal && createItemModal()}
+            {showEditModal && editItemModal()}
             {showDeleteModal && deleteItemModal()}
         </main>
     )
