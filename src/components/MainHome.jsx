@@ -18,11 +18,9 @@ export default function MainHome(props){
     useEffect(() => {
         const datas = StorageService.get("todo")
         if(datas) setDatas([...datas])
-        console.log("Todos os dados", datas)
     },[])
 
     useEffect(()=>{
-        console.log("SHOWME", editData)
         setShowEditModal(!showEditModal)
     },[editData])
 
@@ -42,14 +40,11 @@ export default function MainHome(props){
         )
         setDatas([...datas, dataToSave])
         setShowCreateModal(!showCreateModal)
-        console.log("DADOS TOTAIS:",datas.length)
     }
 
     const removeData = () => {
         const newDatas = [...datas]
         newDatas.splice(editData-1, 1)
-        console.log("Indice", editData)
-        console.log("dados antigos", datas)
         const reorderedDatas = newDatas.map((newData, i) => {
             return {...newData, id: i+1}
         })
@@ -57,7 +52,6 @@ export default function MainHome(props){
         StorageService.save("todo",
                 [...reorderedDatas]
         )
-        console.log("dados novos", reorderedDatas)
 
         setDatas([...reorderedDatas])
         setShowDeleteModal(!showDeleteModal)
@@ -151,7 +145,6 @@ export default function MainHome(props){
                                     editMethod={(id, name) => setEditData({id, name})}
                                     deleteMethod={() => {
                                         setEditData(list.id)
-                                        console.log("Na hora de deletar",list.id)
                                         setShowDeleteModal(!showDeleteModal)
                                     }}
                                 />
