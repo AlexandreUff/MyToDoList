@@ -13,16 +13,12 @@ export default function MainHome(props){
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [datas, setDatas] = useState([])
 
-    const [editData, setEditData] = useState("")
+    const [dataHandler, setDataHandler] = useState("")
 
     useEffect(() => {
         const datas = StorageService.get("todo")
         if(datas) setDatas([...datas])
     },[])
-
-    /* useEffect(()=>{
-        setShowEditModal(!showEditModal)
-    },[editData]) */
 
     const saveData = () => {
         const inputValue = document.getElementById("create-list")
@@ -44,7 +40,7 @@ export default function MainHome(props){
 
     const removeData = () => {
         const newDatas = [...datas]
-        newDatas.splice(editData-1, 1)
+        newDatas.splice(dataHandler-1, 1)
         const reorderedDatas = newDatas.map((newData, i) => {
             return {...newData, id: i+1}
         })
@@ -57,9 +53,9 @@ export default function MainHome(props){
         setShowDeleteModal(!showDeleteModal)
     }
 
-    const editListData = () => {
+    const editData = () => {
         const newDatas = [...datas]
-        newDatas[editData.id-1].name = editData.name
+        newDatas[dataHandler.id-1].name = dataHandler.name
 
         StorageService.save("todo",
                 [...newDatas]
@@ -98,7 +94,7 @@ export default function MainHome(props){
         )
     }
 
-    const editListModal = (datas) => {
+    const editListModal = () => {
         return (
             <FlexModal message={"Altere o nome lista:"}>
                 <input type="text" style={{
@@ -112,9 +108,9 @@ export default function MainHome(props){
                     fontSize:"2rem",
                     fontWeight: "600"
                     }}
-                    value={editData.name}
-                    onChange={e => setEditData({
-                        id: editData.id,
+                    value={dataHandler.name}
+                    onChange={e => setDataHandler({
+                        id: dataHandler.id,
                         name: e.target.value
                     })}
                 />
@@ -124,7 +120,7 @@ export default function MainHome(props){
                     alignItems:"center",
                     marginTop:"10px",
                 }}>
-                    <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={editListData} />
+                    <Button icon={<IcoCheckConfirm/>} text={"Alterar"} action={editData} />
                     <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowEditModal(!showEditModal)}} />
                 </div>
             </FlexModal>
@@ -158,13 +154,14 @@ export default function MainHome(props){
                                     key={i}
                                     text={list.name}
                                     editMethod={() => {
-                                        setEditData({
-                                            id: list.id, name:list.name
+                                        setDataHandler({
+                                            id: list.id,
+                                            name:list.name
                                         })
                                         setShowEditModal(!showEditModal)
                                     }}
                                     deleteMethod={() => {
-                                        setEditData(list.id)
+                                        setDataHandler(list.id)
                                         setShowDeleteModal(!showDeleteModal)
                                     }}
                                     linkNav={list.id}
@@ -173,7 +170,7 @@ export default function MainHome(props){
                 </div>
             </section>
             {showCreateModal && createListModal()}
-            {showEditModal && editListModal(editData) /* (editData && editListModal(editData)) */}
+            {showEditModal && editListModal()}
             {showDeleteModal && deleteListModal()}
         </main>
     )
