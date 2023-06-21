@@ -133,6 +133,7 @@ export default function MainHome(props) {
             fontWeight: "600",
           }}
           id="create-list"
+          autoFocus
         />
         <div
           style={{
@@ -177,6 +178,7 @@ export default function MainHome(props) {
             fontSize: "2rem",
             fontWeight: "600",
           }}
+          autoFocus
           value={dataToBeHandled.name}
           onChange={(e) =>
             setDataToBeHandled({

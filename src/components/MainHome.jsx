@@ -80,6 +80,7 @@ export default function MainHome(props){
                     fontWeight: "600"
                 }}
                     id="create-list"
+                    autoFocus
                  />
                 <div style={{
                     display:"flex",
@@ -108,6 +109,7 @@ export default function MainHome(props){
                     fontSize:"2rem",
                     fontWeight: "600"
                     }}
+                    autoFocus
                     value={dataHandler.name}
                     onChange={e => setDataHandler({
                         id: dataHandler.id,
