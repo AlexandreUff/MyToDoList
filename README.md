@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# My ToDo List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto desenvolvido por Alexandre Magno Dias.
 
-## Available Scripts
+### Sobre o My ToDo List
 
-In the project directory, you can run:
+O My ToDo List é um sistema que permite que você crie, gerencie e conclua suas tarefas de maneira fácil e organizada.
 
-### `npm start`
+### Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- HTML;
+- CSS;
+- Javascript;
+- ReactJs;
+- SASS/SCSS.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Como iniciar o My ToDo List
 
-### `npm test`
+1) Faça o download desse repositório em seu dispositivo;
+2) Ao ser concluído o download, abra o terminal na pasta;
+3) Digite `npm i` para instalar todas as dependências (Obs: Deve-se ter o gerenciador npm instalado em seu dispositivo);
+4) Quando todas as dependências estiverem sido corretamente instaladas, digite `npm start`para iniciar a aplicação;
+5) A aplicação irá executar em uma aba do navegador padrão na porta 3000 em localhost dessa forma: "http://localhost:3000". Caso esta porta já esteja em uso executando uma outra aplicação, o terminal irá sugerir uma nova porta ou já executará automaticamente em uma outra;
+6) A aplicação já está pronta pra seu devido uso;
+7) Também pode ser acessada pela versão de produção no link que está disponível no final deste documento.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Imagens das telas da aplicação
 
-### `npm run build`
+#### Versão Desktop
+![Tela inicial sem listas](https://uploaddeimagens.com.br/images/004/515/690/original/Captura_de_tela_de_2023-06-21_15-45-33.png?1687376752)
+![Tela inicial com listas](https://uploaddeimagens.com.br/images/004/515/701/original/Captura_de_tela_de_2023-06-21_15-47-24.png?1687377291)
+![Tela de sobre](https://uploaddeimagens.com.br/images/004/515/703/original/Captura_de_tela_de_2023-06-21_15-50-27.png?1687377416)
+![Tela de itens vazia](https://uploaddeimagens.com.br/images/004/515/706/original/Captura_de_tela_de_2023-06-21_15-50-41.png?1687377579)
+![Tela de itens conteúdo](https://uploaddeimagens.com.br/images/004/515/713/original/Captura_de_tela_de_2023-06-21_15-52-13.png?1687377716)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Versão Mobile
+![Tela inicial com listas mobile](https://uploaddeimagens.com.br/images/004/515/695/original/Captura_de_tela_de_2023-06-21_15-48-55.png?1687376998)
+![Tela inicial com listas mobile](https://uploaddeimagens.com.br/images/004/515/696/original/Captura_de_tela_de_2023-06-21_15-48-38.png?1687377087)
+![Tela de sobre mobile](https://uploaddeimagens.com.br/images/004/515/704/full/Captura_de_tela_de_2023-06-21_15-50-02.png?1687377455)
+![Tela de itens vazia mobile](https://uploaddeimagens.com.br/images/004/515/710/original/Captura_de_tela_de_2023-06-21_15-50-57.png?1687377639)
+![Tela de itens conteúdo mobile](https://uploaddeimagens.com.br/images/004/515/715/original/Captura_de_tela_de_2023-06-21_15-52-22.png?1687377742)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Versão de produção (Deploy) da aplicação
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://my-todo-list-vibbra.netlify.app/
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Contato
+[LinkedIn de Alexandre Magno](https://www.linkedin.com/in/alexandre-magno-dias-pinto-3659b5225/)
