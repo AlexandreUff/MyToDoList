@@ -108,6 +108,22 @@ $shadowDefault: 0px 5px 10px #00000050;
                 margin-top: 25px;
                 flex-wrap: wrap;
             }
+
+            h4 {
+                font-family: 'Noto Sans';
+                text-align: center;
+                color: $color1;
+                margin: 10px 0px;
+            }
+
+            p {
+                font-family: 'Noto Sans';
+                text-align: justify;
+                text-indent: 60px;
+                font-size: 2rem;
+                color: $color1;
+                margin: 10px 0px;
+            }
         }
     }
 
@@ -461,6 +477,10 @@ $shadowDefault: 0px 5px 10px #00000050;
             section {
                 padding: 20px 5px;
                 justify-content: space-between;
+
+                .about-content{
+                    padding: 0px 10px;
+                }
             }
         }
     }

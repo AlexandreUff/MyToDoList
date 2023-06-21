@@ -93,6 +93,20 @@
   margin-top: 25px;
   flex-wrap: wrap;
 }
+.main-container main.main-home section h4, .main-container main.main-list section h4, .main-container main.main-about section h4 {
+  font-family: "Noto Sans";
+  text-align: center;
+  color: #4C4C6D;
+  margin: 10px 0px;
+}
+.main-container main.main-home section p, .main-container main.main-list section p, .main-container main.main-about section p {
+  font-family: "Noto Sans";
+  text-align: justify;
+  text-indent: 60px;
+  font-size: 2rem;
+  color: #4C4C6D;
+  margin: 10px 0px;
+}
 .main-container .main-button {
   display: flex;
   align-items: center;
@@ -360,6 +374,9 @@
   .main-container main.main-home section, .main-container main.main-list section, .main-container main.main-about section {
     padding: 20px 5px;
     justify-content: space-between;
+  }
+  .main-container main.main-home section .about-content, .main-container main.main-list section .about-content, .main-container main.main-about section .about-content {
+    padding: 0px 10px;
   }
 }
 @media (max-width: 440px) {
