@@ -75,6 +75,27 @@ export default function MainHome(props){
         setShowEditModal(!showEditModal)
     }
 
+    const renderItems = () => {
+        return datas.map((list, i) => {
+                return <List
+                            key={i}
+                            text={list.name}
+                            editMethod={() => {
+                                setDataHandler({
+                                    id: list.id,
+                                    name:list.name
+                                })
+                                setShowEditModal(!showEditModal)
+                            }}
+                            deleteMethod={() => {
+                                setDataHandler(list.id)
+                                setShowDeleteModal(!showDeleteModal)
+                            }}
+                            linkNav={list.id}
+                        />
+                })
+    }
+
     const createListModal = () => {
         return (
             <FlexModal message={"Digite o nome de sua nova lista:"}>
@@ -161,24 +182,7 @@ export default function MainHome(props){
             <section>
                 <Button icon={<IcoStar/>} text={"Criar uma lista"} action={()=>{setShowCreateModal(!showCreateModal)}} />
                 <div className="list-area">
-                    {datas.map((list, i) => {
-                        return <List
-                                    key={i}
-                                    text={list.name}
-                                    editMethod={() => {
-                                        setDataHandler({
-                                            id: list.id,
-                                            name:list.name
-                                        })
-                                        setShowEditModal(!showEditModal)
-                                    }}
-                                    deleteMethod={() => {
-                                        setDataHandler(list.id)
-                                        setShowDeleteModal(!showDeleteModal)
-                                    }}
-                                    linkNav={list.id}
-                                />
-                    })}
+                    {renderItems()}
                 </div>
             </section>
             {(showCreateModal || currentRoute !== '/') && createListModal()}
