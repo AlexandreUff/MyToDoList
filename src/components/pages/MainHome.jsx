@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
-import Button from "./Button";
-import FlexModal from "./FlexModal";
-import { IcoCheckConfirm, IcoClipBoardChecked, IcoEmail, IcoX } from "./Icons";
-import Item from "./Item";
-import NavBar from "./NavBar";
-import StorageService from "../services/StorageService";
-import { useParams } from "react-router-dom";
+import Button from "../Button";
+import FlexModal from "../FlexModal";
+import { IcoCheckConfirm, IcoStar, IcoX } from "../Icons";
+import List from "../List";
+import NavBar from "../NavBar";
+import StorageService from "../../services/StorageService";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function MainHome(props) {
-  const { listId } = useParams();
-  const listIdToNumber = +listId;
-
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -18,29 +15,25 @@ export default function MainHome(props) {
 
   const [dataToBeHandled, setDataToBeHandled] = useState("");
 
-  const storageDatas = StorageService.get("todo");
-
-  const listName = storageDatas[listIdToNumber - 1].name;
-
-  /* useEffect(() => {      ENTENDER ISSO AQUI
-    if (storageDatas) setDatas([...storageDatas[listIdToNumber - 1].itens]);
-  }, []); */
+  const location = useLocation();
+  const currentRoute = location.pathname.replace(process.env.PUBLIC_URL, "");
 
   useEffect(() => {
-    if (
-      storageDatas &&
-      JSON.stringify(storageDatas[listIdToNumber - 1].itens) !==
-        JSON.stringify(datas)
-    ) {
-      setDatas([...storageDatas[listIdToNumber - 1].itens]);
-    }
-  }, [storageDatas, listIdToNumber, datas]);
+    const datas = StorageService.get("todo");
+    if (datas) setDatas([...datas]);
+  }, []);
+
+  const navigate = useNavigate();
+
+  const Navigation = (id) => {
+    navigate(`/list/${id}`);
+  };
 
   const lettersExcessMessage = (max) => {
     return (
       <p style={{ marginBottom: "10px", color: "red" }}>
         Não pode exceder mais de {max} caractere(s)! Diminua para criar/editar
-        seu item.
+        sua lista.
       </p>
     );
   };
@@ -49,31 +42,13 @@ export default function MainHome(props) {
     const dataToSave = {
       id: datas.length + 1,
       name: dataToBeHandled,
-      isDone: false,
-      order: datas.length + 1,
+      itens: [],
     };
 
-    const newStorageDatas = [...storageDatas];
+    StorageService.save("todo", [...datas, dataToSave]);
 
-    newStorageDatas[listIdToNumber - 1].itens.push(dataToSave);
-
-    StorageService.save("todo", [...newStorageDatas]);
-    setDatas([...datas, dataToSave]);
     setDataToBeHandled("");
-    setShowCreateModal(!showCreateModal);
-  };
-
-  const dataHandler = (newDatas) => {
-    const newStorageDatas = [...storageDatas];
-    newStorageDatas[listIdToNumber - 1].itens.length = 0;
-    Array.prototype.push.apply(
-      newStorageDatas[listIdToNumber - 1].itens,
-      newDatas
-    );
-
-    StorageService.save("todo", [...newStorageDatas]);
-
-    setDatas([...newDatas]);
+    Navigation(datas.length + 1);
   };
 
   const removeData = () => {
@@ -83,64 +58,50 @@ export default function MainHome(props) {
       return { ...newData, id: i + 1 };
     });
 
-    dataHandler(reorderedDatas);
+    StorageService.save("todo", [...reorderedDatas]);
 
+    setDatas([...reorderedDatas]);
     setShowDeleteModal(!showDeleteModal);
   };
 
-  const changeName = () => {
+  const editData = () => {
     const newDatas = [...datas];
     newDatas[dataToBeHandled.id - 1].name = dataToBeHandled.name;
 
-    dataHandler(newDatas);
+    StorageService.save("todo", [...newDatas]);
+
+    setDatas([...newDatas]);
     setShowEditModal(!showEditModal);
   };
 
-  const changeStatus = (id) => {
-    const newDatas = [...datas];
-    newDatas[id].isDone = !newDatas[id].isDone;
-
-    dataHandler(newDatas);
-  };
-
   const renderItems = () => {
-    return datas.map((item, i) => {
+    return datas.map((list, i) => {
       return (
-        <Item
+        <List
           key={i}
-          text={item.name}
+          text={list.name}
           editMethod={() => {
             setDataToBeHandled({
-              id: item.id,
-              name: item.name,
+              id: list.id,
+              name: list.name,
             });
             setShowEditModal(!showEditModal);
           }}
           deleteMethod={() => {
-            setDataToBeHandled(item.id);
+            setDataToBeHandled(list.id);
             setShowDeleteModal(!showDeleteModal);
           }}
-          changeStatus={() => {
-            changeStatus(i);
-          }}
-          done={item.isDone}
+          linkNav={list.id}
         />
       );
     });
   };
 
-  const sendEmail = () => {
-    const exampleAddress = "digite_o_email_a_enviar@example.com";
-    const emailTitle = encodeURIComponent(`Minha lista de ${listName}`);
-    const mailtoLink = `mailto:${exampleAddress}?subject=${emailTitle}`;
-    window.location.href = mailtoLink;
-  };
-
-  const createItemModal = () => {
+  const createListModal = () => {
     const maxCharacters = 72;
 
     return (
-      <FlexModal message={"Digite o nome de seu novo item:"}>
+      <FlexModal message={"Digite o nome de sua nova lista:"}>
         {dataToBeHandled.length > maxCharacters &&
           lettersExcessMessage(maxCharacters)}
         <input
@@ -182,6 +143,7 @@ export default function MainHome(props) {
             text={"Cancelar"}
             action={() => {
               setShowCreateModal(!showCreateModal);
+              setDataToBeHandled("");
             }}
           />
         </div>
@@ -189,11 +151,11 @@ export default function MainHome(props) {
     );
   };
 
-  const editItemModal = () => {
+  const editListModal = () => {
     const maxCharacters = 72;
 
     return (
-      <FlexModal message={"Altere o nome do item:"}>
+      <FlexModal message={"Altere o nome lista:"}>
         {dataToBeHandled.name.length > maxCharacters &&
           lettersExcessMessage(maxCharacters)}
         <input
@@ -230,7 +192,7 @@ export default function MainHome(props) {
             <Button
               icon={<IcoCheckConfirm />}
               text={"Alterar"}
-              action={changeName}
+              action={editData}
             />
           )}
           <Button
@@ -245,9 +207,9 @@ export default function MainHome(props) {
     );
   };
 
-  const deleteItemModal = () => {
+  const deleteListModal = () => {
     return (
-      <FlexModal message={"Tem certeza que deseja excluir este item?"}>
+      <FlexModal message={"Tem certeza que deseja excluir essa lista?"}>
         <div
           style={{
             display: "flex",
@@ -276,45 +238,43 @@ export default function MainHome(props) {
   };
 
   return (
-    <main className="main-list">
+    <main className="main-home">
       <NavBar />
       <section>
-        <h3 className="list-page-title">Lista: {listName}</h3>
-        <div className="buttons-content">
-          <Button
-            icon={<IcoClipBoardChecked />}
-            text={"Criar um item"}
-            action={() => {
-              setShowCreateModal(!showCreateModal);
-            }}
-          />
-          <Button
-            icon={<IcoEmail />}
-            text={"Enviar esta lista por e-mail"}
-            action={() => {
-              sendEmail();
-            }}
-          />
-        </div>
-        <div className="item-area">
+        <Button
+          icon={<IcoStar />}
+          text={"Criar uma lista"}
+          action={() => {
+            setShowCreateModal(!showCreateModal);
+          }}
+        />
+        <div className="list-area">
           {datas.length > 0 ? (
             renderItems()
           ) : (
             <>
               <div className="about-content">
-                <h4>Esta lista encontra-se vazia!</h4>
+                <h4>Bem-vindo ao My ToDo List!</h4>
                 <p>
-                  Caso queira criar um novo item, basta clicar acima em{" "}
-                  <span>Criar um item</span>.
+                  Para que se possa criar uma nova lista, basta clicar no botão{" "}
+                  <span>Criar uma lista</span> logo acima. Com ele, você pode
+                  criar seus itens que irão compor essa lista e, se desejar,
+                  pode também alterar seus nomes ou mesmo excluí-los.
+                </p>
+                <p>
+                  Caso tenha dúvidas ou queira aprender melhor a usar o{" "}
+                  <span>My ToDo List</span>, basta clicar no menu{" "}
+                  <span>Sobre</span> logo acima. Pois lá contém todas as
+                  informações necessárias para usar esta maravilhosa ferramenta.
                 </p>
               </div>
             </>
           )}
         </div>
       </section>
-      {showCreateModal && createItemModal()}
-      {showEditModal && editItemModal()}
-      {showDeleteModal && deleteItemModal()}
+      {(showCreateModal || currentRoute !== "/") && createListModal()}
+      {showEditModal && editListModal()}
+      {showDeleteModal && deleteListModal()}
     </main>
   );
 }
