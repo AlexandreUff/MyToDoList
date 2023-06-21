@@ -181,6 +181,9 @@
   color: #E8F6EF;
   cursor: pointer;
 }
+.main-container .list:hover {
+  cursor: pointer;
+}
 .main-container .item {
   display: flex;
   justify-content: flex-start;
