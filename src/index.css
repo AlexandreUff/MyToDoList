@@ -107,6 +107,13 @@
   color: #4C4C6D;
   margin: 10px 0px;
 }
+.main-container main.main-home section p span, .main-container main.main-list section p span, .main-container main.main-about section p span {
+  font-weight: 600;
+  font-size: 2rem;
+}
+.main-container main.main-home section p span.check, .main-container main.main-list section p span.check, .main-container main.main-about section p span.check {
+  color: #1B9C85;
+}
 .main-container .main-button {
   display: flex;
   align-items: center;

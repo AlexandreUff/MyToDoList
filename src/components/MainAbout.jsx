@@ -8,7 +8,7 @@ export default function MainHome(props) {
         <div className="about-content">
           <h4>Bem-vindo ao My ToDo List!</h4>
           <p>
-            O My ToDo List é uma lista de afazeres, um sistema que permite que
+            O <span>My ToDo List</span> é uma lista de afazeres, um sistema que permite que
             você crie, gerencie e conclua suas tarefas de maneira fácil e
             organizada.
           </p>
@@ -27,8 +27,8 @@ export default function MainHome(props) {
           <p>
             Além de criar listas e adicionar itens, você também pode editar e
             excluir tanto as listas quanto os itens individualmente e,
-            especificamentte para os itens, marcá-los e desmarcá-los como
-            "concluídos". Isso permite que você mantenha suas informações
+            especificamentte para os itens, marcá-los e desmarcá-los
+            como <span className="check">☑ concluídos</span>. Isso permite que você mantenha suas informações
             atualizadas e ajuste suas tarefas de acordo com suas necessidades em
             constante mudança como forma de acompanhar e orientar seu progresso.
           </p>
@@ -39,7 +39,7 @@ export default function MainHome(props) {
             tarefas importantes.
           </p>
           <p>
-            Em resumo, o To-Do List é uma ferramenta simples, porém poderosa,
+            Em resumo, o <span>My ToDo List</span> é uma ferramenta simples, porém poderosa,
             que facilita a organização de suas tarefas diárias. Com ele, você
             pode criar listas com nomes contextualizados, adicionar e gerenciar
             itens, marcar tarefas como concluídas e até compartilhar suas listas
