@@ -30,6 +30,15 @@ export default function MainHome(props){
         navigate(`/list/${id}`)
     }
 
+    const lettersExcessMessage = (max) => {
+        return (
+        <p style={{marginBottom:"10px",color:"red"}}>
+            Não pode exceder mais de {max} caractere(s)!
+            Diminua para criar/editar sua lista.
+        </p>
+        )
+    }
+
     const saveData = () => {
         const dataToSave = {
             id: datas.length+1,
@@ -97,8 +106,11 @@ export default function MainHome(props){
     }
 
     const createListModal = () => {
+        const maxCharacters = 72
+
         return (
             <FlexModal message={"Digite o nome de sua nova lista:"}>
+                {dataToBeHandled.length > maxCharacters && lettersExcessMessage(maxCharacters)}
                 <input type="text" style={{
                     background:"transparent",
                     width:"90%",
@@ -120,16 +132,22 @@ export default function MainHome(props){
                     alignItems:"center",
                     marginTop:"10px",
                 }}>
-                    <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={()=>{saveData()}} />
-                    <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowCreateModal(!showCreateModal)}} />
+                    {dataToBeHandled.length <= maxCharacters && <Button icon={<IcoCheckConfirm/>} text={"Criar"} action={()=>{saveData()}} />}
+                    <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{
+                        setShowCreateModal(!showCreateModal)
+                        setDataToBeHandled('')
+                    }} />
                 </div>
             </FlexModal>
         )
     }
 
     const editListModal = () => {
+        const maxCharacters = 72
+
         return (
             <FlexModal message={"Altere o nome lista:"}>
+                {dataToBeHandled.name.length > maxCharacters && lettersExcessMessage(maxCharacters)}
                 <input type="text" style={{
                     background:"transparent",
                     width:"90%",
@@ -154,7 +172,7 @@ export default function MainHome(props){
                     alignItems:"center",
                     marginTop:"10px",
                 }}>
-                    <Button icon={<IcoCheckConfirm/>} text={"Alterar"} action={editData} />
+                    {dataToBeHandled.name.length <= maxCharacters && <Button icon={<IcoCheckConfirm/>} text={"Alterar"} action={editData} />}
                     <Button icon={<IcoX/>} text={"Cancelar"} action={()=>{setShowEditModal(!showEditModal)}} />
                 </div>
             </FlexModal>

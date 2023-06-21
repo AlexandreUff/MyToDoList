@@ -32,6 +32,15 @@ export default function MainHome(props) {
     }
   }, [storageDatas, listIdToNumber, datas]);
 
+  const lettersExcessMessage = (max) => {
+    return (
+    <p style={{marginBottom:"10px",color:"red"}}>
+        Não pode exceder mais de {max} caractere(s)!
+        Diminua para criar/editar seu item.
+    </p>
+    )
+  }
+
   const saveData = () => {
     const dataToSave = {
       id: datas.length + 1,
@@ -124,8 +133,11 @@ export default function MainHome(props) {
   }
 
   const createItemModal = () => {
+    const maxCharacters = 72
+
     return (
       <FlexModal message={"Digite o nome de seu novo item:"}>
+        {dataToBeHandled.length > maxCharacters && lettersExcessMessage(maxCharacters)}
         <input
           type="text"
           style={{
@@ -151,13 +163,13 @@ export default function MainHome(props) {
             marginTop: "10px",
           }}
         >
-          <Button
+          {dataToBeHandled.length <= maxCharacters && <Button
             icon={<IcoCheckConfirm />}
             text={"Criar"}
             action={() => {
               saveData();
             }}
-          />
+          />}
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
@@ -171,8 +183,11 @@ export default function MainHome(props) {
   };
 
   const editItemModal = () => {
+    const maxCharacters = 72
+
     return (
       <FlexModal message={"Altere o nome do item:"}>
+        {dataToBeHandled.name.length > maxCharacters && lettersExcessMessage(maxCharacters)}
         <input
           type="text"
           style={{
@@ -203,11 +218,11 @@ export default function MainHome(props) {
             marginTop: "10px",
           }}
         >
-          <Button
+          {dataToBeHandled.name.length <= maxCharacters && <Button
             icon={<IcoCheckConfirm />}
             text={"Alterar"}
             action={changeName}
-          />
+          />}
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
