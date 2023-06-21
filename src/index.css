@@ -98,6 +98,7 @@
   text-align: center;
   color: #4C4C6D;
   margin: 10px 0px;
+  font-size: 2.5rem;
 }
 .main-container main.main-home section p, .main-container main.main-list section p, .main-container main.main-about section p {
   font-family: "Noto Sans";
