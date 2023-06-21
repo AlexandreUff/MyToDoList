@@ -15,6 +15,7 @@ function App() {
           <Route index element={<MainHome />} />
           <Route path='/list/:listId' element={<MainList />} />
           <Route path='/about' element={<MainAbout />} />
+          <Route path='*' element={<MainHome />} />
         </Routes>
       </Router>
     </div>

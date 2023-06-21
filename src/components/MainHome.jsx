@@ -5,6 +5,7 @@ import { IcoCheckConfirm, IcoStar, IcoX } from "./Icons";
 import List from "./List";
 import NavBar from "./NavBar";
 import StorageService from "../services/StorageService";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function MainHome(props){
 
@@ -15,10 +16,19 @@ export default function MainHome(props){
 
     const [dataHandler, setDataHandler] = useState("")
 
+    const location = useLocation()
+    const currentRoute = location.pathname.replace(process.env.PUBLIC_URL, '')  
+
     useEffect(() => {
         const datas = StorageService.get("todo")
         if(datas) setDatas([...datas])
     },[])
+
+    const navigate = useNavigate()
+
+    const Navigation = (id) => {
+        navigate(`/list/${id}`)
+    }
 
     const saveData = () => {
         const inputValue = document.getElementById("create-list")
@@ -34,8 +44,8 @@ export default function MainHome(props){
                 dataToSave
             ]
         )
-        setDatas([...datas, dataToSave])
-        setShowCreateModal(!showCreateModal)
+
+        Navigation(datas.length+1)
     }
 
     const removeData = () => {
@@ -171,7 +181,7 @@ export default function MainHome(props){
                     })}
                 </div>
             </section>
-            {showCreateModal && createListModal()}
+            {(showCreateModal || currentRoute !== '/') && createListModal()}
             {showEditModal && editListModal()}
             {showDeleteModal && deleteListModal()}
         </main>
