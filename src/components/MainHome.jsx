@@ -14,7 +14,7 @@ export default function MainHome(props){
     const [showDeleteModal, setShowDeleteModal] = useState(false)
     const [datas, setDatas] = useState([])
 
-    const [dataHandler, setDataHandler] = useState("")
+    const [dataToBeHandled, setDataToBeHandled] = useState("")
 
     const location = useLocation()
     const currentRoute = location.pathname.replace(process.env.PUBLIC_URL, '')  
@@ -33,7 +33,7 @@ export default function MainHome(props){
     const saveData = () => {
         const dataToSave = {
             id: datas.length+1,
-            name: dataHandler,
+            name: dataToBeHandled,
             itens: []
         }
 
@@ -49,7 +49,7 @@ export default function MainHome(props){
 
     const removeData = () => {
         const newDatas = [...datas]
-        newDatas.splice(dataHandler-1, 1)
+        newDatas.splice(dataToBeHandled-1, 1)
         const reorderedDatas = newDatas.map((newData, i) => {
             return {...newData, id: i+1}
         })
@@ -64,7 +64,7 @@ export default function MainHome(props){
 
     const editData = () => {
         const newDatas = [...datas]
-        newDatas[dataHandler.id-1].name = dataHandler.name
+        newDatas[dataToBeHandled.id-1].name = dataToBeHandled.name
 
         StorageService.save("todo",
                 [...newDatas]
@@ -80,14 +80,14 @@ export default function MainHome(props){
                             key={i}
                             text={list.name}
                             editMethod={() => {
-                                setDataHandler({
+                                setDataToBeHandled({
                                     id: list.id,
                                     name:list.name
                                 })
                                 setShowEditModal(!showEditModal)
                             }}
                             deleteMethod={() => {
-                                setDataHandler(list.id)
+                                setDataToBeHandled(list.id)
                                 setShowDeleteModal(!showDeleteModal)
                             }}
                             linkNav={list.id}
@@ -110,8 +110,8 @@ export default function MainHome(props){
                     fontWeight: "600"
                 }}
                     autoFocus
-                    value={dataHandler}
-                    onChange={e => setDataHandler(e.target.value)}
+                    value={dataToBeHandled}
+                    onChange={e => setDataToBeHandled(e.target.value)}
                  />
                 <div style={{
                     display:"flex",
@@ -141,9 +141,9 @@ export default function MainHome(props){
                     fontWeight: "600"
                     }}
                     autoFocus
-                    value={dataHandler.name}
-                    onChange={e => setDataHandler({
-                        id: dataHandler.id,
+                    value={dataToBeHandled.name}
+                    onChange={e => setDataToBeHandled({
+                        id: dataToBeHandled.id,
                         name: e.target.value
                     })}
                 />

@@ -33,7 +33,6 @@ export default function MainHome(props) {
   }, [storageDatas, listIdToNumber, datas]);
 
   const saveData = () => {
-    /* const inputValue = document.getElementById("create-list"); */
     const dataToSave = {
       id: datas.length + 1,
       name: dataToBeHandled,
