@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Button from "../Button";
-import FlexModal from "../FlexModal";
-import { IcoCheckConfirm, IcoStar, IcoX } from "../Icons";
-import List from "../List";
-import NavBar from "../NavBar";
-import StorageService from "../../services/StorageService";
+import Button from "../components/Button";
+import FlexModal from "../components/FlexModal";
+import { IcoCheckConfirm, IcoStar, IcoX } from "../components/Icons";
+import List from "../components/List";
+import NavBar from "../components/NavBar";
+import StorageService from "../services/StorageService";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export default function MainHome(props) {

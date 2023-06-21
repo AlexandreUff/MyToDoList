@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Button from "../Button";
-import FlexModal from "../FlexModal";
-import { IcoCheckConfirm, IcoClipBoardChecked, IcoEmail, IcoX } from "../Icons";
-import Item from "../Item";
-import NavBar from "../NavBar";
-import StorageService from "../../services/StorageService";
+import Button from "../components/Button";
+import FlexModal from "../components/FlexModal";
+import { IcoCheckConfirm, IcoClipBoardChecked, IcoEmail, IcoX } from "../components/Icons";
+import Item from "../components/Item";
+import NavBar from "../components/NavBar";
+import StorageService from "../services/StorageService";
 import { useParams } from "react-router-dom";
 
 export default function MainHome(props) {

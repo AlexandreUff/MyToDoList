@@ -1,7 +1,7 @@
 import Header from "./components/Header";
-import MainHome from "./components/pages/MainHome";
-import MainList from "./components/pages/MainList";
-import MainAbout from "./components/pages/MainAbout";
+import MainHome from "./views/MainHome";
+import MainList from "./views/MainList";
+import MainAbout from "./views/MainAbout";
 import "./index.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
