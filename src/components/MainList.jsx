@@ -27,19 +27,23 @@ export default function MainHome(props) {
   }, []); */
 
   useEffect(() => {
-    if (storageDatas && JSON.stringify(storageDatas[listIdToNumber - 1].itens) !== JSON.stringify(datas)) {
+    if (
+      storageDatas &&
+      JSON.stringify(storageDatas[listIdToNumber - 1].itens) !==
+        JSON.stringify(datas)
+    ) {
       setDatas([...storageDatas[listIdToNumber - 1].itens]);
     }
   }, [storageDatas, listIdToNumber, datas]);
 
   const lettersExcessMessage = (max) => {
     return (
-    <p style={{marginBottom:"10px",color:"red"}}>
-        Não pode exceder mais de {max} caractere(s)!
-        Diminua para criar/editar seu item.
-    </p>
-    )
-  }
+      <p style={{ marginBottom: "10px", color: "red" }}>
+        Não pode exceder mais de {max} caractere(s)! Diminua para criar/editar
+        seu item.
+      </p>
+    );
+  };
 
   const saveData = () => {
     const dataToSave = {
@@ -55,7 +59,7 @@ export default function MainHome(props) {
 
     StorageService.save("todo", [...newStorageDatas]);
     setDatas([...datas, dataToSave]);
-    setDataToBeHandled('')
+    setDataToBeHandled("");
     setShowCreateModal(!showCreateModal);
   };
 
@@ -126,18 +130,19 @@ export default function MainHome(props) {
   };
 
   const sendEmail = () => {
-    const exampleAddress = 'digite_o_email_a_enviar@example.com'
-    const emailTitle = encodeURIComponent(`Minha lista de ${listName}`)
-    const mailtoLink = `mailto:${exampleAddress}?subject=${emailTitle}`
+    const exampleAddress = "digite_o_email_a_enviar@example.com";
+    const emailTitle = encodeURIComponent(`Minha lista de ${listName}`);
+    const mailtoLink = `mailto:${exampleAddress}?subject=${emailTitle}`;
     window.location.href = mailtoLink;
-  }
+  };
 
   const createItemModal = () => {
-    const maxCharacters = 72
+    const maxCharacters = 72;
 
     return (
       <FlexModal message={"Digite o nome de seu novo item:"}>
-        {dataToBeHandled.length > maxCharacters && lettersExcessMessage(maxCharacters)}
+        {dataToBeHandled.length > maxCharacters &&
+          lettersExcessMessage(maxCharacters)}
         <input
           type="text"
           style={{
@@ -153,7 +158,7 @@ export default function MainHome(props) {
           }}
           autoFocus
           value={dataToBeHandled}
-          onChange={e => setDataToBeHandled(e.target.value)}
+          onChange={(e) => setDataToBeHandled(e.target.value)}
         />
         <div
           style={{
@@ -163,13 +168,15 @@ export default function MainHome(props) {
             marginTop: "10px",
           }}
         >
-          {dataToBeHandled.length <= maxCharacters && <Button
-            icon={<IcoCheckConfirm />}
-            text={"Criar"}
-            action={() => {
-              saveData();
-            }}
-          />}
+          {dataToBeHandled.length <= maxCharacters && (
+            <Button
+              icon={<IcoCheckConfirm />}
+              text={"Criar"}
+              action={() => {
+                saveData();
+              }}
+            />
+          )}
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
@@ -183,11 +190,12 @@ export default function MainHome(props) {
   };
 
   const editItemModal = () => {
-    const maxCharacters = 72
+    const maxCharacters = 72;
 
     return (
       <FlexModal message={"Altere o nome do item:"}>
-        {dataToBeHandled.name.length > maxCharacters && lettersExcessMessage(maxCharacters)}
+        {dataToBeHandled.name.length > maxCharacters &&
+          lettersExcessMessage(maxCharacters)}
         <input
           type="text"
           style={{
@@ -218,11 +226,13 @@ export default function MainHome(props) {
             marginTop: "10px",
           }}
         >
-          {dataToBeHandled.name.length <= maxCharacters && <Button
-            icon={<IcoCheckConfirm />}
-            text={"Alterar"}
-            action={changeName}
-          />}
+          {dataToBeHandled.name.length <= maxCharacters && (
+            <Button
+              icon={<IcoCheckConfirm />}
+              text={"Alterar"}
+              action={changeName}
+            />
+          )}
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
@@ -282,23 +292,24 @@ export default function MainHome(props) {
             icon={<IcoEmail />}
             text={"Enviar esta lista por e-mail"}
             action={() => {
-              sendEmail()
+              sendEmail();
             }}
           />
         </div>
         <div className="item-area">
-        {datas.length > 0 ?
-                        renderItems() : (
-                            <>
-                            <div className="about-content">
-                                <h4>Esta lista encontra-se vazia!</h4>
-                                <p>
-                                    Caso queira criar um novo item, basta clicar acima
-                                    em <span>Criar um item</span>.
-                                </p>
-                            </div>
-                            </>
-                    )}
+          {datas.length > 0 ? (
+            renderItems()
+          ) : (
+            <>
+              <div className="about-content">
+                <h4>Esta lista encontra-se vazia!</h4>
+                <p>
+                  Caso queira criar um novo item, basta clicar acima em{" "}
+                  <span>Criar um item</span>.
+                </p>
+              </div>
+            </>
+          )}
         </div>
       </section>
       {showCreateModal && createItemModal()}
