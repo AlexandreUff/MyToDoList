@@ -44,6 +44,7 @@ export default function MainHome(props){
             ]
         )
 
+        setDataToBeHandled('')
         Navigation(datas.length+1)
     }
 

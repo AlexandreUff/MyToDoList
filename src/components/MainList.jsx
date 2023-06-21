@@ -46,6 +46,7 @@ export default function MainHome(props) {
 
     StorageService.save("todo", [...newStorageDatas]);
     setDatas([...datas, dataToSave]);
+    setDataToBeHandled('')
     setShowCreateModal(!showCreateModal);
   };
 
