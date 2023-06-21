@@ -182,7 +182,25 @@ export default function MainHome(props){
             <section>
                 <Button icon={<IcoStar/>} text={"Criar uma lista"} action={()=>{setShowCreateModal(!showCreateModal)}} />
                 <div className="list-area">
-                    {renderItems()}
+                    {datas.length > 0 ?
+                        renderItems() : (
+                            <>
+                            <div className="about-content">
+                                <h4>Bem-vindo ao My ToDo List!</h4>
+                                <p>
+                                    Para que se possa criar uma nova lista, basta clicar no
+                                    botão <span>Criar uma lista</span> logo acima. Com ele, você pode criar seus
+                                    itens que irão compor essa lista e, se desejar, pode também
+                                    alterar seus nomes ou mesmo excluí-los.
+                                </p>
+                                <p>
+                                    Caso tenha dúvidas ou queira aprender melhor a usar o <span>My ToDo List</span>,
+                                    basta clicar no menu <span>Sobre</span> logo acima. Pois lá contém todas as informações
+                                    necessárias para usar esta maravilhosa ferramenta.
+                                </p>
+                            </div>
+                            </>
+                    )}
                 </div>
             </section>
             {(showCreateModal || currentRoute !== '/') && createListModal()}

@@ -271,7 +271,18 @@ export default function MainHome(props) {
           />
         </div>
         <div className="item-area">
-          {renderItems()}
+        {datas.length > 0 ?
+                        renderItems() : (
+                            <>
+                            <div className="about-content">
+                                <h4>Esta lista encontra-se vazia!</h4>
+                                <p>
+                                    Caso queira criar um novo item, basta clicar acima
+                                    em <span>Criar um item</span>.
+                                </p>
+                            </div>
+                            </>
+                    )}
         </div>
       </section>
       {showCreateModal && createItemModal()}
