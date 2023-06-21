@@ -33,10 +33,10 @@ export default function MainHome(props) {
   }, [storageDatas, listIdToNumber, datas]);
 
   const saveData = () => {
-    const inputValue = document.getElementById("create-list");
+    /* const inputValue = document.getElementById("create-list"); */
     const dataToSave = {
       id: datas.length + 1,
-      name: inputValue.value,
+      name: dataToBeHandled,
       isDone: false,
       order: datas.length + 1,
     };
@@ -139,8 +139,9 @@ export default function MainHome(props) {
             fontSize: "2rem",
             fontWeight: "600",
           }}
-          id="create-list"
           autoFocus
+          value={dataToBeHandled}
+          onChange={e => setDataToBeHandled(e.target.value)}
         />
         <div
           style={{

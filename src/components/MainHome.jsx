@@ -31,10 +31,9 @@ export default function MainHome(props){
     }
 
     const saveData = () => {
-        const inputValue = document.getElementById("create-list")
         const dataToSave = {
             id: datas.length+1,
-            name: inputValue.value,
+            name: dataHandler,
             itens: []
         }
 
@@ -110,8 +109,9 @@ export default function MainHome(props){
                     fontSize:"2rem",
                     fontWeight: "600"
                 }}
-                    id="create-list"
                     autoFocus
+                    value={dataHandler}
+                    onChange={e => setDataHandler(e.target.value)}
                  />
                 <div style={{
                     display:"flex",
