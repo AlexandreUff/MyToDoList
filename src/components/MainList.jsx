@@ -116,6 +116,13 @@ export default function MainHome(props) {
     });
   };
 
+  const sendEmail = () => {
+    const exampleAddress = 'digite_o_email_a_enviar@example.com'
+    const emailTitle = encodeURIComponent(`Minha lista de ${listName}`)
+    const mailtoLink = `mailto:${exampleAddress}?subject=${emailTitle}`
+    window.location.href = mailtoLink;
+  }
+
   const createItemModal = () => {
     return (
       <FlexModal message={"Digite o nome de seu novo item:"}>
@@ -259,7 +266,7 @@ export default function MainHome(props) {
             icon={<IcoEmail />}
             text={"Enviar esta lista por e-mail"}
             action={() => {
-              console.log("itsWorks too");
+              sendEmail()
             }}
           />
         </div>
