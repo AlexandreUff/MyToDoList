@@ -391,6 +391,9 @@
   .main-container header {
     padding: 10px 30px;
   }
+  .main-container main.main-home section .list-area {
+    justify-content: center;
+  }
   .main-container .list {
     width: 125px;
     height: 135px;
