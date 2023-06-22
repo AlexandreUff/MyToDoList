@@ -27,7 +27,7 @@ export default function MainHome(props) {
           <p>
             Além de criar listas e adicionar itens, você também pode editar e
             excluir tanto as listas quanto os itens individualmente e,
-            especificamentte para os itens, marcá-los e desmarcá-los como{" "}
+            especificamente para os itens, marcá-los e desmarcá-los como{" "}
             <span className="check">☑ concluídos</span>. Isso permite que você
             mantenha suas informações atualizadas e ajuste suas tarefas de
             acordo com suas necessidades em constante mudança como forma de
