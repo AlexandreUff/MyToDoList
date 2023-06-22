@@ -43,7 +43,7 @@ export default function MainHome(props) {
     );
   };
 
-  const createListData = () => {
+  const createList = () => {
     const dataToSave = {
       id: datas.length + 1,
       name: dataToBeHandled,
@@ -56,7 +56,7 @@ export default function MainHome(props) {
     Navigation(datas.length + 1);
   };
 
-  const removeListData = () => {
+  const removeList = () => {
     const newDatas = [...datas];
     newDatas.splice(dataToBeHandled - 1, 1);
     const reorderedDatas = newDatas.map((newData, i) => {
@@ -69,7 +69,7 @@ export default function MainHome(props) {
     closeModal(setShowDeleteModal)
   };
 
-  const editListData = () => {
+  const editList = () => {
     const newDatas = [...datas];
     newDatas[dataToBeHandled.id - 1].name = dataToBeHandled.name;
 
@@ -139,7 +139,7 @@ export default function MainHome(props) {
               icon={<IcoCheckConfirm />}
               text={"Criar"}
               action={() => {
-                createListData();
+                createList();
               }}
             />
           )}
@@ -194,7 +194,7 @@ export default function MainHome(props) {
             <Button
               icon={<IcoCheckConfirm />}
               text={"Alterar"}
-              action={editListData}
+              action={editList}
             />
           )}
           <Button
@@ -227,7 +227,7 @@ export default function MainHome(props) {
             icon={<IcoCheckConfirm />}
             text={"Remover"}
             action={() => {
-              removeListData();
+              removeList();
             }}
           />
           <Button

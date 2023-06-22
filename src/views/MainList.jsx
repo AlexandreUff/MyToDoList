@@ -50,7 +50,7 @@ export default function MainHome(props) {
     );
   };
 
-  const saveData = () => {
+  const createItem = () => {
     const dataToSave = {
       id: datas.length + 1,
       name: dataToBeHandled,
@@ -82,7 +82,7 @@ export default function MainHome(props) {
     setDatas([...newDatas]);
   };
 
-  const removeData = () => {
+  const removeItem = () => {
     const newDatas = [...datas];
     newDatas.splice(dataToBeHandled - 1, 1);
     const reorderedDatas = newDatas.map((newData, i) => {
@@ -95,7 +95,7 @@ export default function MainHome(props) {
     closeModal(setShowDeleteModal)
   };
 
-  const changeName = () => {
+  const changeItemName = () => {
     const newDatas = [...datas];
     newDatas[dataToBeHandled.id - 1].name = dataToBeHandled.name;
 
@@ -104,7 +104,7 @@ export default function MainHome(props) {
     closeModal(setShowEditModal)
   };
 
-  const changeStatus = (id) => {
+  const changeItemStatus = (id) => {
     const newDatas = [...datas];
     newDatas[id].isDone = !newDatas[id].isDone;
 
@@ -129,7 +129,7 @@ export default function MainHome(props) {
             setShowDeleteModal(!showDeleteModal);
           }}
           changeStatus={() => {
-            changeStatus(i);
+            changeItemStatus(i);
           }}
           done={item.isDone}
         />
@@ -181,7 +181,7 @@ export default function MainHome(props) {
               icon={<IcoCheckConfirm />}
               text={"Criar"}
               action={() => {
-                saveData();
+                createItem();
               }}
             />
           )}
@@ -236,7 +236,7 @@ export default function MainHome(props) {
             <Button
               icon={<IcoCheckConfirm />}
               text={"Alterar"}
-              action={changeName}
+              action={changeItemName}
             />
           )}
           <Button
@@ -264,7 +264,7 @@ export default function MainHome(props) {
             icon={<IcoCheckConfirm />}
             text={"Remover"}
             action={() => {
-              removeData();
+              removeItem();
             }}
           />
           <Button
