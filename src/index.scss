@@ -171,12 +171,6 @@ $shadowDefault: 0px 5px 10px #00000050;
         }
     }
 
-    /* VEJA SE PÔR GRID NÃO É MAIS INTERESSANTE */
-    /* TALVEZ SEJA INTERESSSANTE PÔR ESSA CLASSE DENTRO DA SECTION 
-    TALVEZ FAZER ISSO TAMBÉM COM AS DEMAIS PRA MANTER FIDELIDADE DE POSICIONAMENTO
-    DOS ELEMENOS DENTRO DAS TAGS OS QUAIS FORAM INSERIDOS 
-    */
-
     .list{
         display: flex;
         justify-content: center;
@@ -351,12 +345,6 @@ $shadowDefault: 0px 5px 10px #00000050;
         background-color: $color2;
         color: $color3;
 
-        /* Ajustar esse DONE e pôr o botão de envio de e-mail */
-
-        /* .ico-list-content{
-            border: $color1 solid 3px;
-        } */
-
         .tools-content,.ico-list-content{
             border: $color3 solid 3px;
             background-color: $color2;
@@ -367,7 +355,6 @@ $shadowDefault: 0px 5px 10px #00000050;
             border-right: $color3 solid 3px;
         }
 
-        /* Remover  verão checked anterior */
         input[type="checkbox"]{
             &:checked::after{
                 content: "✓";

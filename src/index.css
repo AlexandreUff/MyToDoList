@@ -12,11 +12,6 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  /* VEJA SE PÔR GRID NÃO É MAIS INTERESSANTE */
-  /* TALVEZ SEJA INTERESSSANTE PÔR ESSA CLASSE DENTRO DA SECTION 
-  TALVEZ FAZER ISSO TAMBÉM COM AS DEMAIS PRA MANTER FIDELIDADE DE POSICIONAMENTO
-  DOS ELEMENOS DENTRO DAS TAGS OS QUAIS FORAM INSERIDOS 
-  */
 }
 .main-container header {
   display: flex;
@@ -278,11 +273,6 @@
   border: #1B9C85 solid 5px;
   background-color: #1B9C85;
   color: #E8F6EF;
-  /* Ajustar esse DONE e pôr o botão de envio de e-mail */
-  /* .ico-list-content{
-      border: $color1 solid 3px;
-  } */
-  /* Remover  verão checked anterior */
 }
 .main-container .done .tools-content, .main-container .done .ico-list-content {
   border: #E8F6EF solid 3px;

@@ -22,10 +22,6 @@ export default function MainHome(props) {
 
   const listName = storageDatas[listIdToNumber - 1].name;
 
-  /* useEffect(() => {      ENTENDER ISSO AQUI
-    if (storageDatas) setDatas([...storageDatas[listIdToNumber - 1].itens]);
-  }, []); */
-
   useEffect(() => {
     if (
       storageDatas &&
@@ -64,8 +60,6 @@ export default function MainHome(props) {
 
     StorageService.save("todo", [...newStorageDatas]);
     setDatas([...datas, dataToSave]);
-    /* setDataToBeHandled("");
-    setShowCreateModal(!showCreateModal); */
     closeModal(setShowCreateModal)
   };
 
@@ -90,8 +84,6 @@ export default function MainHome(props) {
     });
 
     dataHandler(reorderedDatas);
-
-    /* setShowDeleteModal(!showDeleteModal); */
     closeModal(setShowDeleteModal)
   };
 
@@ -100,7 +92,6 @@ export default function MainHome(props) {
     newDatas[dataToBeHandled.id - 1].name = dataToBeHandled.name;
 
     dataHandler(newDatas);
-    /* setShowEditModal(!showEditModal); */
     closeModal(setShowEditModal)
   };
 
