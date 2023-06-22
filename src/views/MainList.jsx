@@ -36,6 +36,11 @@ export default function MainHome(props) {
     }
   }, [storageDatas, listIdToNumber, datas]);
 
+  const closeModal = (stateToCloseModal) => {
+    setDataToBeHandled("");
+    stateToCloseModal(false);
+  }
+
   const lettersExcessMessage = (max) => {
     return (
       <p style={{ marginBottom: "10px", color: "red" }}>
@@ -59,8 +64,9 @@ export default function MainHome(props) {
 
     StorageService.save("todo", [...newStorageDatas]);
     setDatas([...datas, dataToSave]);
-    setDataToBeHandled("");
-    setShowCreateModal(!showCreateModal);
+    /* setDataToBeHandled("");
+    setShowCreateModal(!showCreateModal); */
+    closeModal(setShowCreateModal)
   };
 
   const dataHandler = (newDatas) => {
@@ -85,7 +91,8 @@ export default function MainHome(props) {
 
     dataHandler(reorderedDatas);
 
-    setShowDeleteModal(!showDeleteModal);
+    /* setShowDeleteModal(!showDeleteModal); */
+    closeModal(setShowDeleteModal)
   };
 
   const changeName = () => {
@@ -93,7 +100,8 @@ export default function MainHome(props) {
     newDatas[dataToBeHandled.id - 1].name = dataToBeHandled.name;
 
     dataHandler(newDatas);
-    setShowEditModal(!showEditModal);
+    /* setShowEditModal(!showEditModal); */
+    closeModal(setShowEditModal)
   };
 
   const changeStatus = (id) => {
@@ -140,7 +148,7 @@ export default function MainHome(props) {
     const maxCharacters = 72;
 
     return (
-      <FlexModal message={"Digite o nome de seu novo item:"}>
+      <FlexModal message={"Digite o nome de seu novo item:"} closeModal={() => closeModal(setShowCreateModal)}>
         {dataToBeHandled.length > maxCharacters &&
           lettersExcessMessage(maxCharacters)}
         <input
@@ -180,9 +188,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={() => {
-              setShowCreateModal(!showCreateModal);
-            }}
+            action={() => closeModal(setShowCreateModal)}
           />
         </div>
       </FlexModal>
@@ -193,7 +199,7 @@ export default function MainHome(props) {
     const maxCharacters = 72;
 
     return (
-      <FlexModal message={"Altere o nome do item:"}>
+      <FlexModal message={"Altere o nome do item:"} closeModal={() => closeModal(setShowEditModal)}>
         {dataToBeHandled.name.length > maxCharacters &&
           lettersExcessMessage(maxCharacters)}
         <input
@@ -236,9 +242,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={() => {
-              setShowEditModal(!showEditModal);
-            }}
+            action={() => closeModal(setShowEditModal)}
           />
         </div>
       </FlexModal>
@@ -247,7 +251,7 @@ export default function MainHome(props) {
 
   const deleteItemModal = () => {
     return (
-      <FlexModal message={"Tem certeza que deseja excluir este item?"}>
+      <FlexModal message={"Tem certeza que deseja excluir este item?"} closeModal={() => closeModal(setShowDeleteModal)}>
         <div
           style={{
             display: "flex",
@@ -266,9 +270,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={() => {
-              setShowDeleteModal(!showDeleteModal);
-            }}
+            action={() => closeModal(setShowDeleteModal)}
           />
         </div>
       </FlexModal>
