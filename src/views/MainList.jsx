@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import FlexModal from "../components/FlexModal";
-import { IcoCheckConfirm, IcoClipBoardChecked, IcoEmail, IcoX } from "../components/Icons";
+import { IcoCheckConfirm, IcoEmail, IcoPlus, IcoX } from "../components/Icons";
 import Item from "../components/Item";
 import NavBar from "../components/NavBar";
 import StorageService from "../services/StorageService";
@@ -275,7 +275,7 @@ export default function MainHome(props) {
         <h3 className="list-page-title">Lista: {listName}</h3>
         <div className="buttons-content">
           <Button
-            icon={<IcoClipBoardChecked />}
+            icon={<IcoPlus />}
             text={"Criar um item"}
             action={() => {
               setShowCreateModal(!showCreateModal);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import FlexModal from "../components/FlexModal";
-import { IcoCheckConfirm, IcoStar, IcoX } from "../components/Icons";
+import { IcoCheckConfirm, IcoPlus, IcoX } from "../components/Icons";
 import List from "../components/List";
 import NavBar from "../components/NavBar";
 import StorageService from "../services/StorageService";
@@ -245,7 +245,7 @@ export default function MainHome(props) {
       <NavBar />
       <section>
         <Button
-          icon={<IcoStar />}
+          icon={<IcoPlus />}
           text={"Criar uma lista"}
           action={() => {
             setShowCreateModal(!showCreateModal);
