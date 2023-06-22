@@ -29,6 +29,11 @@ export default function MainHome(props) {
     navigate(`/list/${id}`);
   };
 
+  const closeModal = (stateToCloseModal) => {
+    setDataToBeHandled("");
+    stateToCloseModal(false);
+  }
+
   const lettersExcessMessage = (max) => {
     return (
       <p style={{ marginBottom: "10px", color: "red" }}>
@@ -61,8 +66,7 @@ export default function MainHome(props) {
     StorageService.save("todo", [...reorderedDatas]);
 
     setDatas([...reorderedDatas]);
-    setDataToBeHandled("");
-    setShowDeleteModal(!showDeleteModal);
+    closeModal(setShowDeleteModal)
   };
 
   const editData = () => {
@@ -72,8 +76,7 @@ export default function MainHome(props) {
     StorageService.save("todo", [...newDatas]);
 
     setDatas([...newDatas]);
-    setDataToBeHandled("");
-    setShowEditModal(!showEditModal);
+    closeModal(setShowEditModal)
   };
 
   const renderItems = () => {
@@ -102,13 +105,8 @@ export default function MainHome(props) {
   const createListModal = () => {
     const maxCharacters = 72;
 
-    const closeModal = () => {
-      setShowCreateModal(!showCreateModal);
-      setDataToBeHandled("");
-    }
-
     return (
-      <FlexModal message={"Digite o nome de sua nova lista:"} closeModal={closeModal}>
+      <FlexModal message={"Digite o nome de sua nova lista:"} closeModal={() => closeModal(setShowCreateModal)}>
         {dataToBeHandled.length > maxCharacters &&
           lettersExcessMessage(maxCharacters)}
         <input
@@ -148,7 +146,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={closeModal}
+            action={() => closeModal(setShowCreateModal)}
           />
         </div>
       </FlexModal>
@@ -158,13 +156,8 @@ export default function MainHome(props) {
   const editListModal = () => {
     const maxCharacters = 72;
 
-    const closeModal = () => {
-      setShowEditModal(!showEditModal);
-      setDataToBeHandled('')
-    }
-
     return (
-      <FlexModal message={"Altere o nome lista:"} closeModal={closeModal}>
+      <FlexModal message={"Altere o nome lista:"} closeModal={() => closeModal(setShowEditModal)}>
         {dataToBeHandled.name.length > maxCharacters &&
           lettersExcessMessage(maxCharacters)}
         <input
@@ -207,7 +200,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={closeModal}
+            action={() => closeModal(setShowEditModal)}
           />
         </div>
       </FlexModal>
@@ -221,7 +214,7 @@ export default function MainHome(props) {
     }
 
     return (
-      <FlexModal message={"Tem certeza que deseja excluir essa lista?"} closeModal={closeModal}>
+      <FlexModal message={"Tem certeza que deseja excluir essa lista?"} closeModal={() => closeModal(setShowDeleteModal)}>
         <div
           style={{
             display: "flex",
@@ -240,7 +233,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={closeModal}
+            action={() => closeModal(setShowDeleteModal)}
           />
         </div>
       </FlexModal>
