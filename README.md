@@ -40,6 +40,13 @@ O My ToDo List é um sistema que permite que você crie, gerencie e conclua suas
 ![Tela de itens vazia mobile](https://uploaddeimagens.com.br/images/004/515/710/original/Captura_de_tela_de_2023-06-21_15-50-57.png?1687377639)
 ![Tela de itens conteúdo mobile](https://uploaddeimagens.com.br/images/004/515/715/original/Captura_de_tela_de_2023-06-21_15-52-22.png?1687377742)
 
+### Features futuras
+
+- Opção para exclusão de mais de um item de uma vez;
+- Alteração de ordem e posicionamento dos itens;
+- Exibição do número de itens no componente de lista;
+- Alteração de estilo da lista ao concluir todos os itens.
+
 ### Versão de produção (Deploy) da aplicação
 
 https://my-todo-list-vibbra.netlify.app/
