@@ -257,7 +257,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
   height: 40px;
   border-radius: 50%;
   border: #4C4C6D solid 3px;
@@ -359,15 +360,11 @@
     padding: 20px 30px;
   }
 }
-@media (max-width: 600px) {
-  .main-container .item {
-    padding: 0 5px;
-  }
+@media (max-width: 520px) {
   .main-container .item h3 {
-    margin: 0 5px;
-  }
-  .main-container .item .tools-content {
-    margin: 0 1px;
+    text-align: center;
+    padding: 0 5px;
+    font-size: 1.5rem;
   }
 }
 @media (max-width: 475px) {
@@ -398,7 +395,6 @@
     width: 125px;
     height: 135px;
     padding: 10px 17px 10px 7px;
-    /* margin: 10px; */
   }
 }
 
