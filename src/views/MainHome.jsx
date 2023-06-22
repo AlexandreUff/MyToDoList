@@ -61,6 +61,7 @@ export default function MainHome(props) {
     StorageService.save("todo", [...reorderedDatas]);
 
     setDatas([...reorderedDatas]);
+    setDataToBeHandled("");
     setShowDeleteModal(!showDeleteModal);
   };
 
@@ -71,6 +72,7 @@ export default function MainHome(props) {
     StorageService.save("todo", [...newDatas]);
 
     setDatas([...newDatas]);
+    setDataToBeHandled("");
     setShowEditModal(!showEditModal);
   };
 
