@@ -10,8 +10,8 @@ export default function FlexModal(props) {
   }, []);
 
   return (
-    <div className="ground-modal">
-      <div className="modal">
+    <div className="ground-modal" onClick={props.closeModal}>
+      <div className="modal" onClick={e => e.stopPropagation()}>
         <div className="ico-content">
           <IcoExclamation />
         </div>

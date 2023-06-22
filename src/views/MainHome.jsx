@@ -100,8 +100,13 @@ export default function MainHome(props) {
   const createListModal = () => {
     const maxCharacters = 72;
 
+    const closeModal = () => {
+      setShowCreateModal(!showCreateModal);
+      setDataToBeHandled("");
+    }
+
     return (
-      <FlexModal message={"Digite o nome de sua nova lista:"}>
+      <FlexModal message={"Digite o nome de sua nova lista:"} closeModal={closeModal}>
         {dataToBeHandled.length > maxCharacters &&
           lettersExcessMessage(maxCharacters)}
         <input
@@ -141,10 +146,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={() => {
-              setShowCreateModal(!showCreateModal);
-              setDataToBeHandled("");
-            }}
+            action={closeModal}
           />
         </div>
       </FlexModal>
@@ -154,8 +156,13 @@ export default function MainHome(props) {
   const editListModal = () => {
     const maxCharacters = 72;
 
+    const closeModal = () => {
+      setShowEditModal(!showEditModal);
+      setDataToBeHandled('')
+    }
+
     return (
-      <FlexModal message={"Altere o nome lista:"}>
+      <FlexModal message={"Altere o nome lista:"} closeModal={closeModal}>
         {dataToBeHandled.name.length > maxCharacters &&
           lettersExcessMessage(maxCharacters)}
         <input
@@ -198,9 +205,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={() => {
-              setShowEditModal(!showEditModal);
-            }}
+            action={closeModal}
           />
         </div>
       </FlexModal>
@@ -208,8 +213,13 @@ export default function MainHome(props) {
   };
 
   const deleteListModal = () => {
+    const closeModal = () => {
+      setDataToBeHandled('')
+      setShowDeleteModal(!showDeleteModal);
+    }
+
     return (
-      <FlexModal message={"Tem certeza que deseja excluir essa lista?"}>
+      <FlexModal message={"Tem certeza que deseja excluir essa lista?"} closeModal={closeModal}>
         <div
           style={{
             display: "flex",
@@ -228,9 +238,7 @@ export default function MainHome(props) {
           <Button
             icon={<IcoX />}
             text={"Cancelar"}
-            action={() => {
-              setShowDeleteModal(!showDeleteModal);
-            }}
+            action={closeModal}
           />
         </div>
       </FlexModal>
